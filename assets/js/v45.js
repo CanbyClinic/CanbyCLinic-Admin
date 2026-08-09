@@ -77,62 +77,85 @@
 
   function initHeroCanvas(){
     const canvas = $('#heroCanvas');
-    const section = $('.hero-scroll');
+    const section = $('.ambulance-hero');
     if(!canvas || !section) return;
-    const ctx = canvas.getContext('2d', { alpha:false });
-    const TOTAL = 130;
-    const frames = new Array(TOTAL);
-    let loaded = 0, current = 0, target = 0, raf = 0, w = 0, h = 0, dpr = 1;
-    const framePath = i => `assets/ambulance-frames/canby_ambulance_${String(i+1).padStart(3,'0')}.webp`;
 
+    const ctx = canvas.getContext('2d', { alpha:false });
+    const FRAME_COUNT = 96;
+    const framePath = i => `assets/ambulance/webp/frame_${String(i+1).padStart(4,'0')}.webp`;
+    const frames = new Array(FRAME_COUNT);
+    const loading = new Set();
+    let cssW=innerWidth, cssH=innerHeight, dpr=1;
+    let targetFrame=0, currentFrame=0, lastDrawn=-1, raf=0, direction=1;
+    let reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const startCopy=$('.ambulance-copy-start'), midCopy=$('.ambulance-copy-mid'), endPanel=$('.ambulance-end'), hint=$('.ambulance-scroll-hint');
+
+    function clamp(v,a=0,b=1){ return Math.max(a,Math.min(b,v)); }
+    function smooth(a,b,x){ const t=clamp((x-a)/(b-a)); return t*t*(3-2*t); }
+    function sectionProgress(){
+      if(reduced) return 0;
+      const r=section.getBoundingClientRect();
+      return clamp(-r.top/Math.max(1,section.offsetHeight-innerHeight));
+    }
     function resize(){
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      w = innerWidth; h = innerHeight;
-      canvas.width = Math.round(w*dpr); canvas.height = Math.round(h*dpr);
-      canvas.style.width = w+'px'; canvas.style.height = h+'px';
-      ctx.setTransform(dpr,0,0,dpr,0,0);
-      draw(Math.round(current));
+      cssW=innerWidth; cssH=innerHeight; dpr=Math.min(devicePixelRatio||1,2);
+      canvas.width=Math.floor(cssW*dpr); canvas.height=Math.floor(cssH*dpr);
+      canvas.style.width=cssW+'px'; canvas.style.height=cssH+'px';
+      ctx.setTransform(dpr,0,0,dpr,0,0); lastDrawn=-1;
     }
-    function draw(index){
-      const img = frames[Math.max(0,Math.min(TOTAL-1,index))];
-      if(!img || !img.complete) return;
-      const ir = img.naturalWidth/img.naturalHeight, cr = w/h;
-      let dw,dh,dx,dy;
-      if(ir>cr){ dh=h; dw=dh*ir; dx=(w-dw)/2; dy=0; }
-      else { dw=w; dh=dw/ir; dx=0; dy=(h-dh)/2; }
-      ctx.clearRect(0,0,w,h); ctx.drawImage(img,dx,dy,dw,dh);
+    function load(i, priority=false){
+      i=Math.max(0,Math.min(FRAME_COUNT-1,i|0));
+      if(frames[i] || loading.has(i)) return;
+      loading.add(i);
+      const img=new Image(); img.decoding='async'; img.fetchPriority=priority?'high':'auto';
+      img.onload=()=>{ frames[i]=img; loading.delete(i); if(lastDrawn<0 || Math.abs(i-currentFrame)<2) drawFrame(Math.round(currentFrame)); };
+      img.onerror=()=>loading.delete(i); img.src=framePath(i);
     }
-    function progress(){
-      const r = section.getBoundingClientRect();
-      const total = section.offsetHeight - innerHeight;
-      return Math.max(0,Math.min(1,-r.top/Math.max(1,total)));
+    function primeAround(index){
+      const i=Math.round(index); load(i,true);
+      for(let k=1;k<=8;k++){ load(i+k*direction,k<4); load(i-k*direction,false); }
+      for(let k=12;k<FRAME_COUNT;k+=18) load(k,false);
+    }
+    function nearestLoaded(i){
+      if(frames[i]) return i;
+      for(let d=1;d<10;d++){ if(frames[i-d]) return i-d; if(frames[i+d]) return i+d; }
+      return -1;
+    }
+    function drawCover(img){
+      const iw=img.naturalWidth||img.width, ih=img.naturalHeight||img.height;
+      const scale=Math.max(cssW/iw,cssH/ih); const dw=iw*scale, dh=ih*scale;
+      // mobile framing deliberately biases right/vehicle instead of naive center crop
+      let x=(cssW-dw)/2, y=(cssH-dh)/2;
+      if(cssW<700) x=(cssW-dw)*.48;
+      ctx.fillStyle='#05070a'; ctx.fillRect(0,0,cssW,cssH);
+      ctx.drawImage(img,x,y,dw,dh);
+    }
+    function drawFrame(index){
+      index=Math.max(0,Math.min(FRAME_COUNT-1,index|0)); const n=nearestLoaded(index); if(n<0)return;
+      if(n===lastDrawn)return; lastDrawn=n; drawCover(frames[n]);
+    }
+    function updateCopy(p){
+      const a=1-smooth(.08,.23,p); const at=12*smooth(.03,.23,p);
+      if(startCopy){ startCopy.style.opacity=a; startCopy.style.transform=`translateY(calc(-50% - ${at}px))`; }
+      const m=smooth(.31,.43,p)*(1-smooth(.62,.74,p));
+      if(midCopy){ midCopy.style.opacity=m; midCopy.style.transform=`translateY(calc(-50% - ${10*(1-m)}px))`; }
+      if(hint) hint.style.opacity=String(1-smooth(.12,.28,p));
+      const e=smooth(.88,.995,p); if(endPanel){ endPanel.style.opacity=e; endPanel.style.visibility=e>.01?'visible':'hidden'; }
+      section.dataset.progress=e>.97?'end':'cinematic';
+      document.body.classList.toggle('ambulance-hero-active',p<.985 && section.getBoundingClientRect().bottom>0);
     }
     function tick(){
-      target = progress()*(TOTAL-1);
-      current += (target-current)*0.18;
-      if(Math.abs(target-current)<0.03) current=target;
-      draw(Math.round(current));
-      const p = progress();
-      document.body.classList.toggle('hero-active', p < .965);
-      const copy = $('.ambulance-copy');
-      if(copy){
-        const enter=Math.max(0,Math.min(1,(p-.08)/.16));
-        const leave=Math.max(0,Math.min(1,(p-.58)/.18));
-        copy.style.opacity = String(enter*(1-leave));
-        copy.style.transform = `translate3d(0,${(1-enter)*28-leave*24}px,0)`;
-      }
+      const p=sectionProgress(); const nextTarget=p*(FRAME_COUNT-1); direction=nextTarget>=targetFrame?1:-1; targetFrame=nextTarget;
+      // scroll owns the target; interpolation only removes wheel/trackpad stepping
+      currentFrame += (targetFrame-currentFrame)*.22;
+      if(Math.abs(targetFrame-currentFrame)<.02) currentFrame=targetFrame;
+      primeAround(currentFrame); drawFrame(Math.round(currentFrame)); updateCopy(p);
       raf=requestAnimationFrame(tick);
     }
-    function preload(){
-      const order=[0,1,2,3,4,5,10,20,30,40,50,60,70,80,90,100,110,120,129];
-      const rest=Array.from({length:TOTAL},(_,i)=>i).filter(i=>!order.includes(i));
-      [...order,...rest].forEach((i,n)=>{
-        const im=new Image(); im.decoding='async'; im.src=framePath(i); frames[i]=im;
-        im.onload=()=>{ loaded++; if(i===0) draw(0); const el=$('.ambulance-loader'); if(el) el.style.opacity=String(Math.max(0,1-loaded/18)); };
-      });
-    }
-    addEventListener('resize',resize,{passive:true});
-    resize(); preload(); tick();
+    // critical first paint + sparse timeline sampling, then direction-aware neighborhood loading
+    [0,1,2,3,4,5,6,7,8,12,18,24,36,48,60,72,84,95].forEach((i,n)=>load(i,n<9));
+    addEventListener('resize',resize,{passive:true}); resize(); tick();
+    document.addEventListener('visibilitychange',()=>{ if(!document.hidden) primeAround(currentFrame); });
   }
 
   function initFaq(){
