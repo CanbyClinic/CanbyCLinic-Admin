@@ -710,3 +710,49 @@
     $$('.donation-frequency button').forEach(x=>x.classList.toggle('active',x===button));
   }));
 })();
+
+
+// --- V44 informative hub tools ---
+(() => {
+  'use strict';
+  const topics = {
+    new: ['New patient path', 'Start with the New Patient guide, review what to bring, then complete the forms preview before calling the clinic.', 'new-patient.html'],
+    forms: ['Forms and visit preparation', 'Use the visit planner and medication list builder so the clinic team has clearer information when you arrive.', 'visit-planner.html'],
+    learn: ['Health education library', 'Explore simple guides on blood pressure, diabetes basics, preventive care, and safe medication lists.', 'health-library.html'],
+    community: ['Community resource directory', 'Find local categories for food, transportation, family support, housing help, senior services, and urgent help.', 'community-resources-directory.html'],
+    volunteer: ['Volunteer or partner', 'Review medical, non-medical, student, language access, outreach, and community partner opportunities.', 'volunteer.html'],
+    portal: ['Patient portal preview', 'Create a demo account, view the dashboard, save visit-prep items, and see how secure portal features will be organized.', 'patient-portal.html']
+  };
+  const title = document.querySelector('[data-help-title]');
+  const copy = document.querySelector('[data-help-copy]');
+  const link = document.querySelector('[data-help-link]');
+  document.querySelectorAll('[data-help-topic]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const item = topics[button.dataset.helpTopic];
+      if (!item || !title || !copy || !link) return;
+      document.querySelectorAll('[data-help-topic]').forEach((b) => b.setAttribute('aria-selected', String(b === button)));
+      title.textContent = item[0]; copy.textContent = item[1]; link.href = item[2];
+    });
+  });
+  const bpBtn = document.querySelector('[data-bp-check]');
+  if (bpBtn) bpBtn.addEventListener('click', () => {
+    const sys = Number(document.querySelector('[data-bp-sys]')?.value || 0);
+    const dia = Number(document.querySelector('[data-bp-dia]')?.value || 0);
+    const out = document.querySelector('[data-bp-output]');
+    if (!out) return;
+    if (!sys || !dia) { out.textContent = 'Enter both numbers to see the education note.'; return; }
+    let level = 'This looks within a lower range, but only a qualified clinician can interpret your numbers in context.';
+    if (sys >= 180 || dia >= 120) level = 'Very high reading. If you have chest pain, trouble breathing, weakness, severe headache, or vision changes, call 911. Otherwise contact a medical professional promptly.';
+    else if (sys >= 140 || dia >= 90) level = 'This falls in a high range. Record the reading and ask a clinician what follow-up is appropriate.';
+    else if (sys >= 130 || dia >= 80) level = 'This may be elevated/high depending on your history. Track readings and review with a clinician.';
+    else if (sys >= 120) level = 'This may be elevated. Healthy habits and follow-up readings can matter.';
+    out.textContent = level;
+  });
+  const medBtn = document.querySelector('[data-med-build]');
+  if (medBtn) medBtn.addEventListener('click', () => {
+    const fields = ['data-med-name','data-med-dose','data-med-why'];
+    const values = fields.map(s => document.querySelector('['+s+']')?.value.trim()).filter(Boolean);
+    const out = document.querySelector('[data-med-output]');
+    if (out) out.textContent = values.length ? 'Add to your visit list: ' + values.join(' · ') : 'Enter the medication name, dose, and reason to create a clear visit note.';
+  });
+})();

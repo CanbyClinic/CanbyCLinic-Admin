@@ -1,18 +1,21 @@
 :root{
-  --blue:#0c5fb8;
-  --blue-700:#084d98;
-  --blue-900:#062f59;
-  --blue-950:#041f3d;
-  --green:#1aa33a;
-  --green-700:#137c2d;
-  --aqua:#2fb9bd;
+  --blue:#4361ee;
+  --blue-700:#3a0ca3;
+  --blue-900:#07224f;
+  --blue-950:#03071e;
+  --green:#06d6a0;
+  --green-700:#049a78;
+  --aqua:#4cc9f0;
+  --violet:#7209b7;
+  --pink:#f72585;
+  --orange:#f77f00;
   --ink:#102438;
   --muted:#586b7c;
   --line:#dbe7ef;
   --paper:#ffffff;
-  --soft:#f5f9fc;
-  --soft-blue:#edf6ff;
-  --mint:#edf8f1;
+  --soft:#f7fbff;
+  --soft-blue:#eef4ff;
+  --mint:#ebfff8;
   --warning:#fff7df;
   --danger:#a32121;
   --shadow-sm:0 10px 28px rgba(5,45,82,.08);
@@ -626,3 +629,16 @@ body[data-site-version="4.3"] :focus-visible{outline:3px solid #32a4ff;outline-o
 }
 @media(max-width:390px){.reference-hero h1{font-size:2.45rem}.reference-benefit-grid{grid-template-columns:1fr}.entry-clinic-meta{grid-template-columns:1fr}.entry-clinic-meta>*:first-child{grid-column:auto}.entry-brand-lockup h2{font-size:1.45rem}.reference-entry-card{grid-template-columns:40px 1fr 30px}.reference-entry-card small{font-size:.68rem}.mobile-app-nav a,.mobile-app-nav button{font-size:.58rem}}
 @media(prefers-reduced-motion:reduce){.ref-ekg-sweep,.ref-heart,.ref-heart-orbit,.ref-travel-dot{animation:none!important}.ref-ekg-sweep{stroke-dasharray:none;stroke-dashoffset:0;opacity:.8}}
+
+
+/* V44 informative hub upgrade */
+.health-hub-section{background:radial-gradient(circle at 15% 10%,rgba(247,37,133,.10),transparent 28%),radial-gradient(circle at 88% 22%,rgba(76,201,240,.18),transparent 28%),linear-gradient(180deg,#fff,#f7fbff);overflow:hidden}
+.help-selector{display:grid;grid-template-columns:.9fr 1.1fr;gap:24px;align-items:stretch;margin-top:28px}
+.help-panel{border:1px solid var(--line);background:rgba(255,255,255,.86);border-radius:28px;padding:26px;box-shadow:var(--shadow-sm);backdrop-filter:blur(10px)}
+.help-buttons{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}.help-buttons button{border:1px solid #d8e5ef;background:#fff;border-radius:17px;padding:16px;text-align:left;font-weight:850;color:#12385b;transition:.18s ease}.help-buttons button:hover,.help-buttons button[aria-selected="true"]{background:linear-gradient(135deg,var(--blue),var(--violet));color:#fff;transform:translateY(-2px);box-shadow:0 14px 30px rgba(67,97,238,.22)}
+.help-result{position:relative;overflow:hidden;background:linear-gradient(135deg,#071f49,#174ea6 52%,#2fb8d7);color:#fff;border-radius:28px;padding:34px;min-height:310px;box-shadow:var(--shadow)}.help-result:after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;right:-70px;bottom:-80px;border:1px solid rgba(255,255,255,.22);box-shadow:0 0 0 55px rgba(255,255,255,.05)}.help-result h3{color:#fff;font-size:2rem}.help-result p{max-width:620px;color:rgba(255,255,255,.86)}.help-result .btn{margin-top:8px;background:#fff;color:#08356d}
+.path-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:30px}.path-card{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:26px;background:#fff;padding:24px;box-shadow:var(--shadow-sm);min-height:245px;text-decoration:none;color:var(--ink);transition:.18s ease}.path-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);color:var(--ink)}.path-card span{display:grid;place-items:center;width:52px;height:52px;border-radius:17px;background:linear-gradient(135deg,var(--green),var(--aqua));color:#042440;font-weight:950;margin-bottom:17px}.path-card h3{font-size:1.22rem}.path-card p{color:var(--muted);font-size:.94rem}.path-card b{position:absolute;right:20px;bottom:18px;color:var(--blue)}
+.library-shell{display:grid;grid-template-columns:.86fr 1.14fr;gap:26px}.library-sidebar{position:sticky;top:105px;align-self:start;border:1px solid var(--line);border-radius:28px;background:#fff;padding:24px;box-shadow:var(--shadow-sm)}.library-sidebar a{display:flex;justify-content:space-between;gap:12px;color:var(--ink);text-decoration:none;border-bottom:1px solid #edf2f7;padding:13px 0;font-weight:800}.library-sidebar a:last-child{border-bottom:0}.library-sidebar a:hover{color:var(--blue)}.library-stack{display:grid;gap:18px}.deep-card{border:1px solid var(--line);border-radius:28px;background:#fff;padding:24px;box-shadow:var(--shadow-sm)}.deep-card h2{font-size:2rem}.deep-card ul{margin:14px 0 0;padding-left:20px}.deep-card li{margin:7px 0;color:#40586b}.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}.tag-row span{background:#eef5ff;color:#174177;border:1px solid #d9e8fb;border-radius:999px;padding:7px 10px;font-size:.82rem;font-weight:800}
+.tool-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.tool-card{border:1px solid var(--line);border-radius:24px;background:#fff;padding:22px;box-shadow:var(--shadow-sm)}.tool-card label{display:grid;gap:7px;font-weight:800;margin:10px 0}.tool-card input,.tool-card textarea,.tool-card select{border:1px solid #cbdbe8;border-radius:12px;padding:12px}.tool-output{margin-top:14px;border-radius:16px;background:#f1f8ff;border:1px solid #d9e9f7;padding:14px;color:#254963;font-size:.92rem}.directory-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.directory-card{border:1px solid var(--line);border-radius:24px;background:#fff;padding:22px;box-shadow:var(--shadow-sm)}.directory-card h3{margin-bottom:6px}.directory-card small{display:block;color:var(--muted);font-weight:800;margin-bottom:10px}.directory-card ul{padding-left:19px;margin:0}.directory-card li{margin:5px 0}.notice-soft{border:1px solid #dce8f3;background:linear-gradient(135deg,#f6fbff,#effcff);border-radius:24px;padding:22px;color:#31536b}.mobile-app-nav{display:none}.mobile-clinic-strip{display:none}
+@media(max-width:900px){.help-selector,.library-shell{grid-template-columns:1fr}.library-sidebar{position:static}.path-grid,.tool-grid,.directory-grid{grid-template-columns:1fr 1fr}.help-buttons{grid-template-columns:1fr}.mobile-app-nav{display:grid}.mobile-clinic-strip{display:grid}}
+@media(max-width:560px){.path-grid,.tool-grid,.directory-grid{grid-template-columns:1fr}.help-result{padding:25px;min-height:250px}.help-result h3{font-size:1.55rem}.library-sidebar,.deep-card,.help-panel{border-radius:21px;padding:20px}}
