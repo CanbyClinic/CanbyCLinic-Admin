@@ -12,5 +12,3 @@
 
 ## Important portal note
 The portal is a polished front-end prototype only. A real secure patient portal needs backend authentication, encrypted storage, access controls, audit logs, secure hosting, and compliance/legal review before collecting PHI.
-
-V46 ambulance cinematic: 96-frame scroll-linked WebP sequence generated from one consistent 3D scene; branding is baked on 3D side planes during render.

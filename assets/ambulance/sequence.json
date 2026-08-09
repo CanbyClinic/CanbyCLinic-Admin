@@ -1,0 +1,8 @@
+{
+  "frames": 120,
+  "desktop": "1600x900",
+  "mobile": "720x1280",
+  "format": "webp",
+  "scrollHeroHeightDesktop": "255vh",
+  "scrollHeroHeightMobile": "235vh"
+}

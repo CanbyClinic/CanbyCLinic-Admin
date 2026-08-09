@@ -77,85 +77,96 @@
 
   function initHeroCanvas(){
     const canvas = $('#heroCanvas');
-    const section = $('.ambulance-hero');
-    if(!canvas || !section) return;
-
-    const ctx = canvas.getContext('2d', { alpha:false });
-    const FRAME_COUNT = 96;
-    const framePath = i => `assets/ambulance/webp/frame_${String(i+1).padStart(4,'0')}.webp`;
-    const frames = new Array(FRAME_COUNT);
-    const loading = new Set();
-    let cssW=innerWidth, cssH=innerHeight, dpr=1;
-    let targetFrame=0, currentFrame=0, lastDrawn=-1, raf=0, direction=1;
-    let reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const startCopy=$('.ambulance-copy-start'), midCopy=$('.ambulance-copy-mid'), endPanel=$('.ambulance-end'), hint=$('.ambulance-scroll-hint');
-
-    function clamp(v,a=0,b=1){ return Math.max(a,Math.min(b,v)); }
-    function smooth(a,b,x){ const t=clamp((x-a)/(b-a)); return t*t*(3-2*t); }
-    function sectionProgress(){
-      if(reduced) return 0;
-      const r=section.getBoundingClientRect();
-      return clamp(-r.top/Math.max(1,section.offsetHeight-innerHeight));
-    }
+    const section = $('.hero-scroll');
+    if(!canvas || !section || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const ctx = canvas.getContext('2d');
+    let w=0,h=0,dpr=1, raf=0, t=0;
+    const particles = Array.from({length:170}, (_,i)=>({
+      x:Math.random(), y:Math.random(), z:Math.random(), s:.35+Math.random()*1.6, p:Math.random()*Math.PI*2,
+      hue:['#00B4D8','#2DC653','#F72585','#FFBE0B','#8338EC'][i%5]
+    }));
     function resize(){
-      cssW=innerWidth; cssH=innerHeight; dpr=Math.min(devicePixelRatio||1,2);
-      canvas.width=Math.floor(cssW*dpr); canvas.height=Math.floor(cssH*dpr);
-      canvas.style.width=cssW+'px'; canvas.style.height=cssH+'px';
-      ctx.setTransform(dpr,0,0,dpr,0,0); lastDrawn=-1;
+      dpr = Math.min(devicePixelRatio || 1, 2);
+      w = canvas.clientWidth = innerWidth; h = canvas.clientHeight = innerHeight;
+      canvas.width = Math.floor(w*dpr); canvas.height = Math.floor(h*dpr); ctx.setTransform(dpr,0,0,dpr,0,0);
     }
-    function load(i, priority=false){
-      i=Math.max(0,Math.min(FRAME_COUNT-1,i|0));
-      if(frames[i] || loading.has(i)) return;
-      loading.add(i);
-      const img=new Image(); img.decoding='async'; img.fetchPriority=priority?'high':'auto';
-      img.onload=()=>{ frames[i]=img; loading.delete(i); if(lastDrawn<0 || Math.abs(i-currentFrame)<2) drawFrame(Math.round(currentFrame)); };
-      img.onerror=()=>loading.delete(i); img.src=framePath(i);
+    function ease(x){return x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2}
+    function progress(){
+      const r = section.getBoundingClientRect();
+      const total = section.offsetHeight - innerHeight;
+      return Math.max(0, Math.min(1, -r.top / Math.max(1,total)));
     }
-    function primeAround(index){
-      const i=Math.round(index); load(i,true);
-      for(let k=1;k<=8;k++){ load(i+k*direction,k<4); load(i-k*direction,false); }
-      for(let k=12;k<FRAME_COUNT;k+=18) load(k,false);
+    function linePath(p){
+      const pts=[]; const cy=h*(.52 - .12*Math.sin(p*Math.PI));
+      for(let i=0;i<80;i++){
+        const x=i/79*w; let y=cy + Math.sin(i*.37 + p*8)*18*(1-p);
+        const k=i/79;
+        const pulse = Math.exp(-Math.pow((k-.25-p*.22)*18,2))*90 + Math.exp(-Math.pow((k-.52-p*.16)*20,2))*70;
+        y += ((i%13===0? -pulse:pulse*.42) * (1-Math.max(0,p-.55)*1.6));
+        if(p>.48){
+          const targetY = h*(.28 + .48*((Math.sin(k*9)+1)/2));
+          y = y*(1-(p-.48)/.52) + targetY*((p-.48)/.52);
+        }
+        pts.push([x,y]);
+      }
+      return pts;
     }
-    function nearestLoaded(i){
-      if(frames[i]) return i;
-      for(let d=1;d<10;d++){ if(frames[i-d]) return i-d; if(frames[i+d]) return i+d; }
-      return -1;
+    function drawBuilding(p){
+      const b = Math.max(0, (p-.63)/.26); if(!b) return;
+      const bx=w*.58, by=h*.58, bw=Math.min(420,w*.44), bh=220;
+      ctx.save(); ctx.globalAlpha=b; ctx.translate(bx, by + (1-b)*90); ctx.scale(.8+b*.2,.8+b*.2);
+      ctx.fillStyle='rgba(255,255,255,.92)'; round(-bw/2,-bh/2,bw,bh,26); ctx.fill();
+      ctx.strokeStyle='rgba(255,255,255,.55)'; ctx.lineWidth=2; ctx.stroke();
+      ctx.fillStyle='rgba(0,180,216,.22)';
+      for(let row=0; row<3; row++) for(let col=0; col<5; col++){ round(-bw/2+34+col*70,-bh/2+32+row*48,38,24,8); ctx.fill(); }
+      ctx.fillStyle='#F72585'; round(-26,-10,52,90,14); ctx.fill();
+      ctx.fillStyle='white'; ctx.font='900 42px Inter, Arial'; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillText('+',0,-52);
+      ctx.fillStyle='rgba(6,18,31,.82)'; ctx.font='900 24px Inter, Arial'; ctx.fillText('Canby Clinic',0,bh/2-32);
+      ctx.restore();
     }
-    function drawCover(img){
-      const iw=img.naturalWidth||img.width, ih=img.naturalHeight||img.height;
-      const scale=Math.max(cssW/iw,cssH/ih); const dw=iw*scale, dh=ih*scale;
-      // mobile framing deliberately biases right/vehicle instead of naive center crop
-      let x=(cssW-dw)/2, y=(cssH-dh)/2;
-      if(cssW<700) x=(cssW-dw)*.48;
-      ctx.fillStyle='#05070a'; ctx.fillRect(0,0,cssW,cssH);
-      ctx.drawImage(img,x,y,dw,dh);
+    function round(x,y,w,h,r){ctx.beginPath();ctx.roundRect(x,y,w,h,r)}
+    function draw(){
+      raf = requestAnimationFrame(draw); t += .016;
+      const p = progress(); const ep = ease(p);
+      ctx.clearRect(0,0,w,h);
+      const grad = ctx.createLinearGradient(0,0,w,h);
+      grad.addColorStop(0, p<.7?'#06121f':'rgba(255,253,247,1)'); grad.addColorStop(.45, p<.7?'#08365d':'rgba(247,251,255,1)'); grad.addColorStop(1, p<.7?'#110829':'rgba(255,253,247,1)');
+      ctx.fillStyle=grad; ctx.fillRect(0,0,w,h);
+      ctx.save(); ctx.globalCompositeOperation='lighter';
+      particles.forEach((a,i)=>{
+        const swirl = ep*Math.PI*3 + a.p;
+        const rx = (a.x-.5)*w*(1.3-.5*ep) + Math.cos(swirl+i*.02)*ep*130;
+        const ry = (a.y-.5)*h*(1.2-.3*ep) + Math.sin(swirl)*ep*70;
+        const x = w/2 + rx; const y = h/2 + ry;
+        const size = a.s*(1+a.z*2)*(p<.72?1.4: .75);
+        ctx.fillStyle=a.hue; ctx.globalAlpha=(p<.72?.5:.18)*(1-a.z*.3);
+        ctx.beginPath(); ctx.arc(x,y,size,0,Math.PI*2); ctx.fill();
+      });
+      ctx.restore();
+      // orbiting health cross tunnel
+      ctx.save(); ctx.translate(w/2,h/2); ctx.rotate(t*.06 + p*.8); ctx.globalAlpha=Math.max(.06,.42-p*.32); ctx.strokeStyle='rgba(255,255,255,.28)'; ctx.lineWidth=1.5;
+      for(let i=0;i<7;i++){ ctx.beginPath(); ctx.ellipse(0,0,120+i*65,44+i*20, i*.45,0,Math.PI*2); ctx.stroke(); }
+      ctx.restore();
+      const pts=linePath(ep);
+      ctx.save(); ctx.lineWidth = Math.max(2, w/520); ctx.lineJoin='round'; ctx.lineCap='round';
+      const g=ctx.createLinearGradient(0,0,w,0); g.addColorStop(0,'#00B4D8'); g.addColorStop(.35,'#2DC653'); g.addColorStop(.66,'#FFBE0B'); g.addColorStop(1,'#F72585');
+      ctx.strokeStyle=g; ctx.shadowColor='#00B4D8'; ctx.shadowBlur=24;
+      ctx.beginPath(); pts.forEach(([x,y],i)=> i?ctx.lineTo(x,y):ctx.moveTo(x,y)); ctx.stroke(); ctx.restore();
+      // map pins / community nodes
+      if(p>.42){
+        const a=Math.min(1,(p-.42)/.32); ctx.save(); ctx.globalAlpha=a; ctx.strokeStyle='rgba(255,255,255,.22)'; ctx.lineWidth=1;
+        for(let i=0;i<9;i++){
+          const x=w*(.16+((i*19)%67)/100), y=h*(.22+((i*31)%58)/100); ctx.beginPath(); ctx.arc(x,y,18+Math.sin(t+i)*4,0,Math.PI*2); ctx.stroke();
+          ctx.fillStyle=['#00B4D8','#2DC653','#F72585','#FFBE0B'][i%4]; ctx.beginPath(); ctx.arc(x,y,4+Math.sin(t*2+i)*1.5,0,Math.PI*2); ctx.fill();
+        }
+        ctx.restore();
+      }
+      drawBuilding(ep);
+      if(p>.82){
+        ctx.save(); ctx.globalAlpha=(p-.82)/.18; ctx.fillStyle='rgba(255,253,247,.92)'; ctx.fillRect(0,0,w,h); ctx.restore();
+      }
     }
-    function drawFrame(index){
-      index=Math.max(0,Math.min(FRAME_COUNT-1,index|0)); const n=nearestLoaded(index); if(n<0)return;
-      if(n===lastDrawn)return; lastDrawn=n; drawCover(frames[n]);
-    }
-    function updateCopy(p){
-      const a=1-smooth(.08,.23,p); const at=12*smooth(.03,.23,p);
-      if(startCopy){ startCopy.style.opacity=a; startCopy.style.transform=`translateY(calc(-50% - ${at}px))`; }
-      const m=smooth(.31,.43,p)*(1-smooth(.62,.74,p));
-      if(midCopy){ midCopy.style.opacity=m; midCopy.style.transform=`translateY(calc(-50% - ${10*(1-m)}px))`; }
-      if(hint) hint.style.opacity=String(1-smooth(.12,.28,p));
-      const e=smooth(.88,.995,p); if(endPanel){ endPanel.style.opacity=e; endPanel.style.visibility=e>.01?'visible':'hidden'; }
-      section.dataset.progress=e>.97?'end':'cinematic';
-      document.body.classList.toggle('ambulance-hero-active',p<.985 && section.getBoundingClientRect().bottom>0);
-    }
-    function tick(){
-      const p=sectionProgress(); const nextTarget=p*(FRAME_COUNT-1); direction=nextTarget>=targetFrame?1:-1; targetFrame=nextTarget;
-      // scroll owns the target; interpolation only removes wheel/trackpad stepping
-      currentFrame += (targetFrame-currentFrame)*.22;
-      if(Math.abs(targetFrame-currentFrame)<.02) currentFrame=targetFrame;
-      primeAround(currentFrame); drawFrame(Math.round(currentFrame)); updateCopy(p);
-      raf=requestAnimationFrame(tick);
-    }
-    // critical first paint + sparse timeline sampling, then direction-aware neighborhood loading
-    [0,1,2,3,4,5,6,7,8,12,18,24,36,48,60,72,84,95].forEach((i,n)=>load(i,n<9));
-    addEventListener('resize',resize,{passive:true}); resize(); tick();
-    document.addEventListener('visibilitychange',()=>{ if(!document.hidden) primeAround(currentFrame); });
+    addEventListener('resize', resize, {passive:true}); resize(); draw();
   }
 
   function initFaq(){
