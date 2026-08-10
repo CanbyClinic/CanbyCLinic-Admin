@@ -52,7 +52,8 @@
       loader?.classList.add('is-ready');
       drawNearest(0);
     });
-    requestIdleCallback?.(() => first.slice(6).forEach(i=>loadFrame(i)), {timeout:1200});
+    const idle = window.requestIdleCallback || ((cb) => setTimeout(cb, 120));
+    idle(() => first.slice(6).forEach(i=>loadFrame(i)), {timeout:1200});
   }
   function resize() {
     dpr = Math.min(devicePixelRatio || 1, 2);
@@ -92,10 +93,10 @@
     for(let n=1;n<=10;n++) loadFrame(i+n*dir);
     for(let n=1;n<=4;n++) loadFrame(i-n*dir);
     const fade=Math.max(0,Math.min(1,(p-.82)/.17));
-    if(nav){nav.style.opacity=String(1-fade); nav.style.transform=`translateX(-50%) translateY(${-8*fade}px)`;}
-    if(scrollLabel) scrollLabel.style.opacity=String(Math.max(0,1-p*3.2));
+    if(nav){nav.style.opacity=String(1-fade); nav.style.visibility=fade>.98?'hidden':'visible'; nav.style.transform=`translateX(-50%) translateY(${-8*fade}px)`;}
+    if(scrollLabel){ const cue=Math.max(0,1-p*3.2); scrollLabel.style.opacity=String(cue); scrollLabel.style.visibility=cue<.03?'hidden':'visible'; }
     if(shade) shade.style.opacity=String(.42*(1-fade));
-    document.body.classList.toggle('terminal-past', p>.985 || section.getBoundingClientRect().bottom<=innerHeight+2);
+    document.body.classList.toggle('terminal-past', p>.94 || section.getBoundingClientRect().bottom<=innerHeight+2);
   }
   function tick() {
     raf=requestAnimationFrame(tick);
