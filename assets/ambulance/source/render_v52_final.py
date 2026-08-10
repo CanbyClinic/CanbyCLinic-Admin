@@ -8,11 +8,13 @@ from PIL import Image, ImageDraw
 import numpy as np
 
 TOTAL=180
-MODEL='/mnt/data/mercedes-benz_sprinter.glb'
-LOGO='/mnt/data/v52_work/canby-logo-transparent.png'
+SRC=Path(__file__).resolve().parent
+MODEL=str(SRC/'mercedes-benz_sprinter.glb')
+LOGO=str(SRC/'canby-logo-transparent.png')
+REAR_ADDRESS=str(SRC/'canby-rear-address.png')
 SCALE=0.03
-BLUE=(0.025,0.31,0.69)
-GREEN=(0.02,0.60,0.22)
+BLUE=(0.020,0.235,0.42)
+GREEN=(0.02,0.50,0.26)
 CYAN=(0.08,0.72,1.0)
 
 
@@ -157,7 +159,7 @@ def style_for(desc,mat_name=''):
     return ((.16,.17,.18),.24,.34,1.0,.07)
 
 
-def import_vehicle(ren,rw,logo):
+def import_vehicle(ren,rw,logo,rear_address=REAR_ADDRESS):
     sc,geom_desc,geom_group=parse_desc_map()
     imp=vtk.vtkGLTFImporter(); imp.SetFileName(MODEL); imp.SetRenderWindow(rw); imp.Update()
     ac=ren.GetActors(); ac.InitTraversal(); imported=[]
@@ -194,17 +196,17 @@ def import_vehicle(ren,rw,logo):
 
     # Physical livery planes follow the side body. Slightly offset to avoid z-fighting.
     for x,flip in [(-50.95,False),(50.95,True)]:
-        # rear -> front, diagonal rise toward cab
-        blue_pts=[(x,28,-108),(x,28,72),(x,35,84),(x,35,-108)]
-        green_pts=[(x,36.5,-108),(x,36.5,70),(x,41,80),(x,41,-108)]
+        # Cleaner ambulance livery: slim, body-contained stripes below the window line.
+        blue_pts=[(x,29.6,-99),(x,29.6,57),(x,32.1,63),(x,32.1,-99)]
+        green_pts=[(x,36.0,-99),(x,36.0,55),(x,38.0,61),(x,38.0,-99)]
         b=plane_x(blue_pts,BLUE,1,0,.22,'Canby blue stripe'); g=plane_x(green_pts,GREEN,1,0,.23,'Canby green stripe')
         base.AddPart(b); base.AddPart(g); decals += [b,g]
-        lg=textured_quad_x(logo,x-0.32 if x<0 else x+0.32,51,72,-58,18,flip,'Canby side logo'); base.AddPart(lg); decals.append(lg)
+        lg=textured_quad_x(logo,x-0.34 if x<0 else x+0.34,45.2,58.8,-44,12,flip,'Canby side logo'); base.AddPart(lg); decals.append(lg)
     # rear wrap bands
-    b=plane_x([(-50.2,28,-121.25),(50.2,28,-121.25),(50.2,35,-121.25),(-50.2,35,-121.25)],BLUE,1,0,.22,'rear blue')
-    g=plane_x([(-50.2,36.5,-121.35),(50.2,36.5,-121.35),(50.2,41,-121.35),(-50.2,41,-121.35)],GREEN,1,0,.22,'rear green')
+    b=plane_x([(-40,29.6,-121.25),(40,29.6,-121.25),(40,32.1,-121.25),(-40,32.1,-121.25)],BLUE,1,0,.22,'rear blue')
+    g=plane_x([(-40,36.0,-121.35),(40,36.0,-121.35),(40,38.0,-121.35),(-40,38.0,-121.35)],GREEN,1,0,.22,'rear green')
     base.AddPart(b); base.AddPart(g); decals += [b,g]
-    rear=textured_quad_z(logo,-121.65,-28,28,51,70); base.AddPart(rear); decals.append(rear)
+    rear=textured_quad_z(rear_address,-121.70,-25,25,58,73); base.AddPart(rear); decals.append(rear)
 
     # Proper roof lightbar attached to roof, plus corner modules.
     lightbar=cube((0,108.0,37),(72,4.2,9.0),(.05,.06,.07),.40,.18,1,'roof lightbar housing'); base.AddPart(lightbar)
@@ -277,7 +279,7 @@ def setup(W,H):
     ren=vtk.vtkRenderer(); ren.GradientBackgroundOn(); ren.SetBackground(.99,.62,.34); ren.SetBackground2(.52,.32,.43)
     pass
     rw=vtk.vtkRenderWindow(); rw.SetOffScreenRendering(1); rw.SetSize(W,H); rw.SetMultiSamples(0); rw.AddRenderer(ren)
-    vehicle=import_vehicle(ren,rw,LOGO)
+    vehicle=import_vehicle(ren,rw,LOGO,REAR_ADDRESS)
     env,digital,road=setup_world(ren)
     # cinematic light rig
     sun=vtk.vtkLight(); sun.SetLightTypeToSceneLight(); sun.SetPosition(-12,16,-20); sun.SetFocalPoint(0,1,8); sun.SetColor(1.0,.58,.28); sun.SetIntensity(1.45); ren.AddLight(sun)
