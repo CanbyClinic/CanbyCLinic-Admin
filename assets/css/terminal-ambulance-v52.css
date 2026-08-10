@@ -1,0 +1,46 @@
+/* Canby V52 — Terminal-inspired scroll cinematic. */
+body.has-terminal-hero { background:#fff; }
+.has-terminal-hero .site-header,
+.has-terminal-hero .mobile-quick { opacity:0; visibility:hidden; pointer-events:none; transition:opacity .28s ease, visibility .28s ease; }
+.has-terminal-hero.terminal-past .site-header,
+.has-terminal-hero.terminal-past .mobile-quick { opacity:1; visibility:visible; pointer-events:auto; }
+
+.terminal-ambulance-hero { position:relative; height:200vh; background:#fff; isolation:isolate; }
+.terminal-ambulance-sticky { position:sticky; top:0; width:100%; height:100vh; height:100svh; overflow:hidden; background:#111; }
+.terminal-ambulance-canvas { position:absolute; inset:0; width:100%; height:100%; display:block; background:#111; }
+.terminal-cinematic-shade { position:absolute; inset:0; pointer-events:none; background:linear-gradient(180deg,rgba(0,0,0,.12),transparent 18%,transparent 78%,rgba(0,0,0,.13)); opacity:.42; transition:opacity .1s linear; }
+
+.terminal-cinematic-nav { position:absolute; z-index:4; top:22px; left:50%; transform:translateX(-50%); width:min(680px,calc(100% - 40px)); min-height:48px; padding:7px 9px 7px 13px; border:1px solid rgba(255,255,255,.13); border-radius:999px; background:rgba(7,12,17,.74); backdrop-filter:blur(18px) saturate(125%); -webkit-backdrop-filter:blur(18px) saturate(125%); display:flex; align-items:center; gap:8px; color:#fff; box-shadow:0 8px 30px rgba(0,0,0,.15); transition:opacity .16s linear, transform .16s linear; }
+.terminal-cinematic-brand { display:flex; align-items:center; gap:9px; text-decoration:none; color:#fff; margin-right:auto; min-width:124px; }
+.terminal-cinematic-brand img { width:70px; height:29px; object-fit:contain; object-position:left center; filter:brightness(0) invert(1); }
+.terminal-cinematic-brand strong { font:800 10px/1 Inter,Arial,sans-serif; letter-spacing:.16em; text-transform:uppercase; white-space:nowrap; }
+.terminal-cinematic-links { display:flex; align-items:center; gap:3px; }
+.terminal-cinematic-links a { color:rgba(255,255,255,.82); text-decoration:none; font:600 10px/1 Inter,Arial,sans-serif; letter-spacing:.055em; padding:11px 12px; border-radius:999px; transition:background .2s,color .2s; }
+.terminal-cinematic-links a:hover { color:#fff; background:rgba(255,255,255,.10); }
+.terminal-cinematic-cta { color:#06121f!important; background:#fff!important; }
+
+.terminal-scroll-label { position:absolute; z-index:4; bottom:22px; left:50%; transform:translateX(-50%); color:rgba(255,255,255,.74); font:700 9px/1 Inter,Arial,sans-serif; letter-spacing:.20em; text-transform:uppercase; display:flex; align-items:center; gap:10px; transition:opacity .16s linear; white-space:nowrap; }
+.terminal-scroll-label::after { content:""; width:36px; height:1px; background:currentColor; opacity:.65; }
+
+.terminal-load-cover { position:absolute; z-index:8; inset:0; display:grid; place-items:center; background:#111; color:#fff; transition:opacity .35s ease,visibility .35s ease; }
+.terminal-load-cover.is-ready { opacity:0; visibility:hidden; pointer-events:none; }
+.terminal-loader { display:flex; flex-direction:column; align-items:center; gap:13px; font:700 9px/1 Inter,Arial,sans-serif; letter-spacing:.18em; text-transform:uppercase; }
+.terminal-loader i { display:block; width:72px; height:1px; background:rgba(255,255,255,.2); overflow:hidden; position:relative; }
+.terminal-loader i::after { content:""; position:absolute; inset:0; background:#fff; transform:translateX(-100%); animation:terminalLoad 1.15s ease-in-out infinite; }
+@keyframes terminalLoad { 55%,100% { transform:translateX(100%); } }
+
+@media (max-width:760px) {
+  .terminal-ambulance-hero { height:200svh; }
+  .terminal-cinematic-nav { top:12px; width:calc(100% - 24px); padding:6px 7px 6px 10px; min-height:44px; }
+  .terminal-cinematic-brand { min-width:0; }
+  .terminal-cinematic-brand img { width:58px; height:25px; }
+  .terminal-cinematic-brand strong { display:none; }
+  .terminal-cinematic-links a { padding:10px 8px; font-size:8px; }
+  .terminal-cinematic-links a:nth-child(2), .terminal-cinematic-links a:nth-child(3) { display:none; }
+  .terminal-scroll-label { bottom:18px; }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .terminal-ambulance-hero { height:100svh; }
+  .terminal-scroll-label { display:none; }
+}
