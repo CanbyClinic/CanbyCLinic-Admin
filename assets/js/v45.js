@@ -287,6 +287,6 @@
   document.body.appendChild(upgradeScript);
 
   document.addEventListener('DOMContentLoaded', () => {
-    initHeader(); initProgress(); initReveal(); initHeroCanvas(); initFaq(); initFilters(); initVisitPlanner(); initBp(); initMedicationBuilder(); initPortal();
+    initHeader(); initProgress(); initHeroCanvas(); initFaq(); initFilters(); initVisitPlanner(); initBp(); initMedicationBuilder(); initPortal();
   });
 })();

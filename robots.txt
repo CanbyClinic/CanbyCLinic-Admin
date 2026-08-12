@@ -1,3 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /patient-portal.html
+Disallow: /create-account.html
+Disallow: /password-reset.html
+Disallow: /patient-dashboard.html
 Sitemap: https://puravidacc.org/sitemap.xml
