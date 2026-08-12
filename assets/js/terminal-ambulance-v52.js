@@ -5,7 +5,7 @@
   const canvas = document.getElementById('terminalAmbulanceCanvas');
   if (!section || !canvas) return;
 
-  const COUNTS = { desktop: 410, mobile: 409 };
+  const COUNTS = { desktop: 410, mobile: 410 };
   const ctx = canvas.getContext('2d', { alpha: false, desynchronized: true });
   const loader = section.querySelector('.terminal-load-cover');
   const scrollLabel = section.querySelector('.terminal-scroll-label');
@@ -31,7 +31,7 @@
   }
 
   function frameURL(index, activeMode = mode) {
-    return `assets/ambulance/${activeMode}-v55/frame_${String(index + 1).padStart(3, '0')}.webp`;
+    return `assets/ambulance/${activeMode}-v58/frame_${String(index + 1).padStart(3, '0')}.webp`;
   }
 
   function loadFrame(index, priority = false, token = generation) {
