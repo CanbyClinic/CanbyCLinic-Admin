@@ -104,7 +104,7 @@
   function drawImageCover(image) {
     if (!image?.naturalWidth) return;
     const cover = Math.max(canvas.width / image.naturalWidth, canvas.height / image.naturalHeight);
-    const framing = mode === 'desktop' ? 0.91 : 0.955;
+    const framing = mode === 'desktop' ? 0.865 : 0.925;
     const scale = cover * framing;
     const width = image.naturalWidth * scale;
     const height = image.naturalHeight * scale;
@@ -146,8 +146,8 @@
     updateTitles(progress);
     if (scrollLabel) scrollLabel.style.opacity = String(Math.max(0, 1 - progress * 3.2));
     if (shade) shade.style.opacity = String(0.34 - progress * 0.12);
-    if (handoff) handoff.style.opacity = String(easedRange(progress, 0.972, 0.999));
-    if (cinematicNav) cinematicNav.style.opacity = String(1 - easedRange(progress, 0.925, 0.988));
+    if (handoff) handoff.style.opacity = String(easedRange(progress, 0.958, 0.997));
+    if (cinematicNav) cinematicNav.style.opacity = '0';
     document.body.classList.toggle(
       'terminal-past',
       progress > 0.995 || section.getBoundingClientRect().bottom <= innerHeight + 2
@@ -160,9 +160,9 @@
     wrapper.setAttribute('aria-hidden', 'true');
     const labels = [
       { headline: 'Care that moves with our community.' },
-      { headline: 'Health can feel scary sometimes.' },
+      { headline: 'Clear care. Close to home.' },
       {
-        headline: 'Real care, right now!',
+        headline: 'Canby Community Clinic',
         detail: '7601 Canby Ave #6B, Reseda, CA 91335  |  (818) 674-4414'
       }
     ];
