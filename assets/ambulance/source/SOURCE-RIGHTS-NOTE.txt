@@ -1,0 +1,5 @@
+SOURCE RIGHTS NOTE
+
+The Type I ambulance donor was supplied by the user as QC.Ambulance.rar. The archive did not include a license or redistribution document. The Canby livery, rig hierarchy, material conversion, embedded glTF packaging, and animation setup were created for this project, but those changes do not establish rights to redistribute the donor geometry.
+
+Before publishing the raw GLB or original Blender source for download, confirm the donor model's commercial-use and redistribution terms. Using rendered frames on the Canby website is a separate use case, but its permissibility should also be confirmed against the donor's original terms.
