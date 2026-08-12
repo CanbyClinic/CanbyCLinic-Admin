@@ -7,13 +7,15 @@
 
   const COUNTS = { desktop: 410, mobile: 410 };
   const ctx = canvas.getContext('2d', { alpha: false, desynchronized: true });
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
   const loader = section.querySelector('.terminal-load-cover');
   const scrollLabel = section.querySelector('.terminal-scroll-label');
   const shade = section.querySelector('.terminal-cinematic-shade');
   const handoff = section.querySelector('.terminal-handoff-panel');
   const cinematicNav = section.querySelector('.terminal-cinematic-nav');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  const vehicleOverlay = createVehicleOverlay();
+  section.classList.add('uses-baked-vehicle');
   const titleSequence = createTitleSequence();
   let mode = selectMode();
   let cache = new Map();
@@ -68,13 +70,25 @@
       drawImageCover(image);
     });
 
-    const queue = Array.from({ length: totalFrames() - 1 }, (_, index) => index + 1);
+    const total = totalFrames();
+    const anchors = [
+      ...Array.from({ length: Math.min(28, total - 1) }, (_, i) => i + 1),
+      ...[0.18, 0.34, 0.50, 0.66, 0.82, 0.96].map(p => Math.min(total - 1, Math.round((total - 1) * p)))
+    ];
+    const seen = new Set([0]);
+    const queue = [];
+    for (const index of anchors) {
+      if (!seen.has(index)) { seen.add(index); queue.push(index); }
+    }
+    for (let index = 1; index < total; index += 1) {
+      if (!seen.has(index)) queue.push(index);
+    }
     const loadBatch = () => {
       if (token !== generation || queue.length === 0) return;
-      queue.splice(0, 8).forEach(index => loadFrame(index, false, token));
-      setTimeout(loadBatch, 50);
+      queue.splice(0, 10).forEach(index => loadFrame(index, false, token));
+      setTimeout(loadBatch, 42);
     };
-    setTimeout(loadBatch, 50);
+    setTimeout(loadBatch, 24);
   }
 
   function resize() {
@@ -126,12 +140,11 @@
     canvas.dataset.displayFrame = String(currentFrame);
     drawNearest(currentFrame);
     loadFrame(currentFrame, true);
-    updateVehicle(progress);
     updateTitles(progress);
     if (scrollLabel) scrollLabel.style.opacity = String(Math.max(0, 1 - progress * 3.2));
-    if (shade) shade.style.opacity = String(0.42 - progress * 0.18);
-    if (handoff) handoff.style.opacity = String(easedRange(progress, 0.90, 0.985));
-    if (cinematicNav) cinematicNav.style.opacity = String(1 - easedRange(progress, 0.86, 0.94));
+    if (shade) shade.style.opacity = String(0.34 - progress * 0.12);
+    if (handoff) handoff.style.opacity = String(easedRange(progress, 0.972, 0.999));
+    if (cinematicNav) cinematicNav.style.opacity = String(1 - easedRange(progress, 0.925, 0.988));
     document.body.classList.toggle(
       'terminal-past',
       progress > 0.995 || section.getBoundingClientRect().bottom <= innerHeight + 2
@@ -363,9 +376,19 @@
     update();
   }
 
-  addEventListener('scroll', update, { passive: true });
+  let rafPending = false;
+  function scheduleUpdate() {
+    if (rafPending) return;
+    rafPending = true;
+    requestAnimationFrame(() => {
+      rafPending = false;
+      update();
+    });
+  }
+
+  addEventListener('scroll', scheduleUpdate, { passive: true });
   addEventListener('resize', handleResize, { passive: true });
-  reduced.addEventListener?.('change', update);
+  reduced.addEventListener?.('change', scheduleUpdate);
   resize();
   prime();
   update();

@@ -5,7 +5,7 @@ body.has-terminal-hero { background:#fff; }
 .has-terminal-hero.terminal-past .site-header,
 .has-terminal-hero.terminal-past .mobile-quick { opacity:1; visibility:visible; pointer-events:auto; }
 
-.terminal-ambulance-hero { position:relative; height:300vh; background:#fff; isolation:isolate; }
+.terminal-ambulance-hero { position:relative; height:320vh; background:#fff; isolation:isolate; }
 .terminal-ambulance-sticky { position:sticky; top:0; width:100%; height:100vh; height:100svh; overflow:hidden; background:#111; }
 .terminal-ambulance-canvas { position:absolute; z-index:0; inset:0; width:100%; height:100%; display:block; background:#111; }
 .terminal-clinic-building-sign { --sign-x:0vw; --sign-scale:1; position:absolute; z-index:1; top:17.5%; left:7%; width:min(34vw,560px); min-height:88px; padding:16px 22px; border-left:5px solid #72bd42; background:rgba(245,250,249,.92); color:#092f48; display:flex; align-items:center; gap:16px; box-shadow:0 10px 28px rgba(0,0,0,.24); opacity:0; transform:translate3d(var(--sign-x),0,0) scale(var(--sign-scale)); transform-origin:left center; will-change:transform,opacity,filter; }
@@ -45,8 +45,8 @@ body.has-terminal-hero { background:#fff; }
 .uses-baked-vehicle .terminal-vehicle-overhead-wire,
 .uses-baked-vehicle .terminal-vehicle-front-stage,
 .uses-baked-vehicle .terminal-clinic-building-sign { display:none; }
-.terminal-cinematic-shade { position:absolute; z-index:2; inset:0; pointer-events:none; background:linear-gradient(180deg,rgba(0,0,0,.12),transparent 18%,transparent 78%,rgba(0,0,0,.13)); opacity:.42; transition:opacity .1s linear; }
-.terminal-handoff-panel { position:absolute; z-index:5; inset:0; pointer-events:none; opacity:0; background:#fff; will-change:opacity; }
+.terminal-cinematic-shade { position:absolute; z-index:2; inset:0; pointer-events:none; background:linear-gradient(180deg,rgba(0,0,0,.10),transparent 20%,transparent 80%,rgba(0,0,0,.10)); opacity:.34; transition:opacity .1s linear; }
+.terminal-handoff-panel { position:absolute; z-index:5; inset:0; pointer-events:none; opacity:0; background:linear-gradient(180deg,rgba(244,246,239,0) 0%,rgba(244,246,239,.38) 38%,#f4f6ef 100%); will-change:opacity; }
 
 .terminal-title-sequence { position:absolute; inset:0; z-index:3; pointer-events:none; display:flex; align-items:center; justify-content:center; padding:88px 36px 52px; }
 .terminal-ambulance-hero .terminal-title-sequence h2 { position:absolute; width:min(92%,1540px); margin:0; color:#fff; text-align:center; font:500 clamp(118px,7vw,136px)/.96 Inter,Arial,sans-serif; letter-spacing:0; text-wrap:balance; }
@@ -73,7 +73,7 @@ body.has-terminal-hero { background:#fff; }
 @keyframes terminalLoad { 55%,100% { transform:translateX(100%); } }
 
 @media (max-width:760px), (max-aspect-ratio:4/5) {
-  .terminal-ambulance-hero { height:300svh; }
+  .terminal-ambulance-hero { height:320svh; }
   .terminal-cinematic-nav { min-height:60px; padding:10px 12px; gap:8px; }
   .terminal-cinematic-brand { min-width:0; }
   .terminal-cinematic-brand img { width:88px; height:30px; }
@@ -100,3 +100,26 @@ body.has-terminal-hero { background:#fff; }
   .terminal-ambulance-hero { height:100svh; }
   .terminal-scroll-label { display:none; }
 }
+
+/* V72/V58 polish: V58 frames already contain the full ambulance/camera FX. */
+.terminal-ambulance-hero.uses-baked-vehicle .terminal-vehicle-overlay,
+.terminal-ambulance-hero.uses-baked-vehicle .terminal-vehicle-angle-stage,
+.terminal-ambulance-hero.uses-baked-vehicle .terminal-vehicle-overhead-wire,
+.terminal-ambulance-hero.uses-baked-vehicle .terminal-vehicle-front-stage,
+.terminal-ambulance-hero.uses-baked-vehicle .terminal-clinic-building-sign { display:none !important; }
+.terminal-ambulance-canvas { transform:translateZ(0); backface-visibility:hidden; }
+
+/* V72.3 Terminal-style finishing pass */
+.terminal-ambulance-hero { height:350vh; }
+.terminal-ambulance-sticky { background:#080a0b; }
+.terminal-ambulance-canvas { image-rendering:auto; filter:saturate(1.035) contrast(1.025); }
+.terminal-cinematic-shade {
+  background:linear-gradient(180deg,rgba(0,0,0,.16),transparent 22%,transparent 72%,rgba(0,0,0,.20)),
+             radial-gradient(ellipse at center,transparent 54%,rgba(0,0,0,.12) 100%);
+  opacity:.30;
+}
+.terminal-handoff-panel {
+  background:linear-gradient(180deg,rgba(244,246,239,0) 0%,rgba(244,246,239,.10) 50%,rgba(244,246,239,.72) 84%,#f4f6ef 100%);
+}
+.terminal-cinematic-brand img { width:132px; height:42px; filter:drop-shadow(0 1px 1px rgba(0,0,0,.22)); }
+@media (max-width:760px), (max-aspect-ratio:4/5) { .terminal-ambulance-hero { height:350svh; } }
