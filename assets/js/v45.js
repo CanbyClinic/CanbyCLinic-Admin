@@ -213,23 +213,80 @@
 
   function initMedicationBuilder(){
     const form = $('#medForm'); const list = $('#medList'); if(!form||!list) return;
-    let meds = JSON.parse(localStorage.getItem('canbyMeds')||'[]');
-    const render=()=>{list.innerHTML = meds.length? meds.map((m,i)=>`<div class="card"><strong>${m.name}</strong><p>${m.dose||''} ${m.when?`— ${m.when}`:''}</p><button class="btn ghost" data-del="${i}">Remove</button></div>`).join(''):'<p class="soft-text">No medications added yet.</p>'; localStorage.setItem('canbyMeds',JSON.stringify(meds));};
+    let meds = [];
+    const render=()=>{list.innerHTML = meds.length? meds.map((m,i)=>`<div class="card"><strong>${m.name}</strong><p>${m.dose||''} ${m.when?`— ${m.when}`:''}</p><button class="btn ghost" data-del="${i}">Remove</button></div>`).join(''):'<p class="soft-text">Nothing has been added. This temporary list is not saved.</p>';};
     form.addEventListener('submit', e=>{e.preventDefault(); meds.push({name:$('#medName').value,dose:$('#medDose').value,when:$('#medWhen').value}); form.reset(); render();});
     list.addEventListener('click', e=>{const b=e.target.closest('[data-del]'); if(b){meds.splice(+b.dataset.del,1); render();}}); render();
   }
 
   function initPortal(){
     const portalForm = $('#portalAuth'); if(portalForm){
-      portalForm.addEventListener('submit', e=>{e.preventDefault(); const name=$('#portalName')?.value||'Canby Patient'; const email=$('#portalEmail').value; localStorage.setItem('canbyUser', JSON.stringify({name,email,created:new Date().toISOString()})); location.href='patient-dashboard.html';});
+      portalForm.addEventListener('submit', e=>{e.preventDefault(); portalForm.reset(); portalForm.insertAdjacentHTML('beforeend','<div class="notice danger"><strong>Portal login is not connected.</strong><p>No information was saved. Call the clinic for the approved secure portal.</p></div>');});
     }
     const userSpot = $('[data-user-name]'); if(userSpot){
-      const u = JSON.parse(localStorage.getItem('canbyUser')||'{}'); userSpot.textContent = u.name || 'Canby Patient';
+      userSpot.textContent = 'Canby Patient';
     }
-    $$('[data-logout]').forEach(b=>b.addEventListener('click',()=>{localStorage.removeItem('canbyUser'); location.href='patient-portal.html';}));
+    $$('[data-logout]').forEach(b=>b.addEventListener('click',()=>{location.href='patient-portal.html';}));
   }
 
+  const upgradeStyle = document.createElement('link');
+  upgradeStyle.rel = 'stylesheet';
+  upgradeStyle.href = 'assets/css/canby-command-center.css?v=61';
+  document.head.appendChild(upgradeStyle);
+  const upgradeScript = document.createElement('script');
+  upgradeScript.src = 'assets/js/canby-command-center.js?v=61';
+  upgradeScript.async = false;
+  upgradeScript.addEventListener('load', () => {
+    const isHome = Boolean(document.querySelector('.cc-home'));
+    if (isHome) {
+      const awardStyle = document.createElement('link');
+      awardStyle.rel = 'stylesheet';
+      awardStyle.href = 'assets/css/canby-award-home.css?v=68';
+      document.head.appendChild(awardStyle);
+    }
+    const unifiedStyle = document.createElement('link');
+    unifiedStyle.rel = 'stylesheet';
+    unifiedStyle.href = 'assets/css/canby-unified-system.css?v=69';
+    document.head.appendChild(unifiedStyle);
+    const polishStyle = document.createElement('link');
+    polishStyle.rel = 'stylesheet';
+    polishStyle.href = 'assets/css/canby-polish-v69.css?v=69';
+    document.head.appendChild(polishStyle);
+    const designStyle = document.createElement('link');
+    designStyle.rel = 'stylesheet';
+    designStyle.href = 'assets/css/canby-site-v71.css?v=71';
+    document.head.appendChild(designStyle);
+    const interiorsStyle = document.createElement('link');
+    interiorsStyle.rel = 'stylesheet';
+    interiorsStyle.href = 'assets/css/canby-interiors-v72.css?v=72';
+    document.head.appendChild(interiorsStyle);
+    const unifiedScript = document.createElement('script');
+    unifiedScript.src = 'assets/js/canby-unified-system.js?v=69';
+    unifiedScript.async = false;
+    unifiedScript.addEventListener('load', () => {
+      const loadDesign = () => {
+        const designScript = document.createElement('script');
+        designScript.src = 'assets/js/canby-site-v71.js?v=71';
+        designScript.async = false;
+        designScript.addEventListener('load', () => {
+          const interiorsScript = document.createElement('script');
+          interiorsScript.src = 'assets/js/canby-interiors-v72.js?v=72';
+          interiorsScript.async = false;
+          document.body.appendChild(interiorsScript);
+        });
+        document.body.appendChild(designScript);
+      };
+      const polishScript = document.createElement('script');
+      polishScript.src = 'assets/js/canby-polish-v69.js?v=71';
+      polishScript.async = false;
+      polishScript.addEventListener('load', loadDesign);
+      document.body.appendChild(polishScript);
+    });
+    document.body.appendChild(unifiedScript);
+  });
+  document.body.appendChild(upgradeScript);
+
   document.addEventListener('DOMContentLoaded', () => {
-    initHeader(); initProgress(); initReveal(); initCursorSparks(); initTilt(); initHeroCanvas(); initFaq(); initFilters(); initVisitPlanner(); initBp(); initMedicationBuilder(); initPortal();
+    initHeader(); initProgress(); initReveal(); initHeroCanvas(); initFaq(); initFilters(); initVisitPlanner(); initBp(); initMedicationBuilder(); initPortal();
   });
 })();

@@ -1,21 +1,64 @@
-/* Canby V53 — Terminal-style Type I ambulance scroll cinematic. */
+/* Canby clean-ambulance composite over the Terminal-timed background sequence. */
 body.has-terminal-hero { background:#fff; }
 .has-terminal-hero .site-header,
 .has-terminal-hero .mobile-quick { opacity:0; visibility:hidden; pointer-events:none; transition:opacity .28s ease, visibility .28s ease; }
 .has-terminal-hero.terminal-past .site-header,
 .has-terminal-hero.terminal-past .mobile-quick { opacity:1; visibility:visible; pointer-events:auto; }
 
-.terminal-ambulance-hero { position:relative; height:200vh; background:#fff; isolation:isolate; }
+.terminal-ambulance-hero { position:relative; height:300vh; background:#fff; isolation:isolate; }
 .terminal-ambulance-sticky { position:sticky; top:0; width:100%; height:100vh; height:100svh; overflow:hidden; background:#111; }
-.terminal-ambulance-canvas { position:absolute; inset:0; width:100%; height:100%; display:block; background:#111; }
-.terminal-cinematic-shade { position:absolute; inset:0; pointer-events:none; background:linear-gradient(180deg,rgba(0,0,0,.12),transparent 18%,transparent 78%,rgba(0,0,0,.13)); opacity:.42; transition:opacity .1s linear; }
+.terminal-ambulance-canvas { position:absolute; z-index:0; inset:0; width:100%; height:100%; display:block; background:#111; }
+.terminal-clinic-building-sign { --sign-x:0vw; --sign-scale:1; position:absolute; z-index:1; top:17.5%; left:7%; width:min(34vw,560px); min-height:88px; padding:16px 22px; border-left:5px solid #72bd42; background:rgba(245,250,249,.92); color:#092f48; display:flex; align-items:center; gap:16px; box-shadow:0 10px 28px rgba(0,0,0,.24); opacity:0; transform:translate3d(var(--sign-x),0,0) scale(var(--sign-scale)); transform-origin:left center; will-change:transform,opacity,filter; }
+.terminal-clinic-building-sign::after { content:""; position:absolute; inset:auto 0 0; height:4px; background:linear-gradient(90deg,#0079bd 0 58%,#72bd42 58%); }
+.terminal-clinic-building-sign img { flex:0 0 auto; width:112px; height:54px; object-fit:contain; }
+.terminal-clinic-building-sign span { min-width:0; display:flex; flex-direction:column; gap:7px; }
+.terminal-clinic-building-sign strong { font:800 16px/1 Inter,Arial,sans-serif; letter-spacing:0; white-space:nowrap; }
+.terminal-clinic-building-sign small { font:600 11px/1.25 Inter,Arial,sans-serif; letter-spacing:0; white-space:nowrap; }
+.terminal-clinic-building-sign.is-xray { border-color:#50d7ff; background:rgba(3,30,43,.74); color:#93eaff; filter:drop-shadow(0 0 14px rgba(74,210,255,.26)); }
+.terminal-clinic-building-sign.is-xray img { filter:brightness(0) saturate(100%) invert(82%) sepia(21%) saturate(1851%) hue-rotate(159deg) brightness(105%); }
+.terminal-vehicle-overlay { --vehicle-x:0vw; --vehicle-scale:1; --wheel-spin:0deg; position:absolute; z-index:1; left:50%; bottom:5.5vh; width:min(88vw,1500px); aspect-ratio:1775/887; pointer-events:none; transform:translate3d(calc(-50% + var(--vehicle-x)),0,0) scale(var(--vehicle-scale)); transform-origin:50% 72%; will-change:transform,opacity; }
+.terminal-vehicle-normal,
+.terminal-vehicle-wire,
+.terminal-vehicle-wheel { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; transition:none; }
+.terminal-vehicle-normal { z-index:1; }
+.terminal-vehicle-wheel { z-index:2; transform:rotate(var(--wheel-spin)); will-change:transform; }
+.terminal-vehicle-wheel-rear { clip-path:circle(5.1% at 26.8% 78.1%); transform-origin:26.8% 78.1%; }
+.terminal-vehicle-wheel-front { clip-path:circle(5.1% at 84% 78.1%); transform-origin:84% 78.1%; }
+.terminal-vehicle-logo { position:absolute; z-index:3; left:10.8%; top:29.5%; width:27.5%; height:auto; object-fit:contain; mix-blend-mode:multiply; transition:none; }
+.terminal-vehicle-wire { z-index:4; opacity:0; filter:drop-shadow(0 0 12px rgba(91,211,255,.30)); }
+.terminal-vehicle-headlight { position:absolute; z-index:5; left:91%; top:55%; width:min(32vw,520px); height:min(8vw,130px); background:radial-gradient(ellipse at left,rgba(255,238,191,.45),rgba(255,210,126,.14) 32%,transparent 72%); filter:blur(9px); transform:translateY(-50%); transform-origin:left center; pointer-events:none; }
+.terminal-vehicle-angle-stage { --angle-x:0vw; --angle-y:0vh; --angle-scale:1; position:absolute; z-index:1; left:50%; top:52%; width:min(88vw,1500px); aspect-ratio:1775/887; pointer-events:none; opacity:0; transform:translate3d(calc(-50% + var(--angle-x)),calc(-50% + var(--angle-y)),0) scale(var(--angle-scale)); transform-origin:center; will-change:transform,opacity; }
+.terminal-vehicle-angle-normal,
+.terminal-vehicle-angle-wire { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
+.terminal-vehicle-angle-normal { z-index:1; }
+.terminal-vehicle-angle-logo { position:absolute; z-index:2; left:12.5%; top:27.5%; width:25%; height:auto; object-fit:contain; mix-blend-mode:multiply; transform:rotate(2.5deg) skewY(2deg); transform-origin:left center; }
+.terminal-vehicle-angle-wire { z-index:3; opacity:0; filter:drop-shadow(0 0 16px rgba(91,211,255,.34)); }
+.terminal-vehicle-overhead-wire { --overhead-x:0vw; --overhead-y:0vh; --overhead-scale:1; position:absolute; z-index:1; left:50%; top:50%; width:min(35vw,570px); height:auto; object-fit:contain; pointer-events:none; opacity:0; transform:translate3d(calc(-50% + var(--overhead-x)),calc(-50% + var(--overhead-y)),0) scale(var(--overhead-scale)); transform-origin:center; filter:drop-shadow(0 0 18px rgba(91,211,255,.36)); will-change:transform,opacity; }
+.terminal-vehicle-front-stage { --front-x:0vw; --front-y:0vh; --front-scale:1; position:absolute; z-index:1; left:50%; top:52%; width:min(120vw,1900px); aspect-ratio:1775/887; pointer-events:none; opacity:0; transform:translate3d(calc(-50% + var(--front-x)),calc(-50% + var(--front-y)),0) scale(var(--front-scale)); transform-origin:50% 40%; will-change:transform,opacity; }
+.terminal-vehicle-front-normal,
+.terminal-vehicle-front-xray { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
+.terminal-vehicle-front-normal { z-index:1; }
+.terminal-vehicle-front-xray { z-index:2; opacity:0; filter:drop-shadow(0 0 22px rgba(64,205,255,.34)); }
+.terminal-vehicle-front-glow { position:absolute; z-index:3; left:50%; top:60%; width:45%; height:25%; transform:translate(-50%,-50%); background:radial-gradient(ellipse,rgba(255,247,212,.24),rgba(144,216,255,.10) 40%,transparent 72%); filter:blur(13px); opacity:0; }
+.uses-baked-vehicle .terminal-vehicle-overlay,
+.uses-baked-vehicle .terminal-vehicle-angle-stage,
+.uses-baked-vehicle .terminal-vehicle-overhead-wire,
+.uses-baked-vehicle .terminal-vehicle-front-stage,
+.uses-baked-vehicle .terminal-clinic-building-sign { display:none; }
+.terminal-cinematic-shade { position:absolute; z-index:2; inset:0; pointer-events:none; background:linear-gradient(180deg,rgba(0,0,0,.12),transparent 18%,transparent 78%,rgba(0,0,0,.13)); opacity:.42; transition:opacity .1s linear; }
+.terminal-handoff-panel { position:absolute; z-index:5; inset:0; pointer-events:none; opacity:0; background:#fff; will-change:opacity; }
 
-.terminal-cinematic-nav { position:absolute; z-index:4; top:22px; left:50%; transform:translateX(-50%); width:min(680px,calc(100% - 40px)); min-height:48px; padding:7px 9px 7px 13px; border:1px solid rgba(255,255,255,.13); border-radius:999px; background:rgba(7,12,17,.74); backdrop-filter:blur(18px) saturate(125%); -webkit-backdrop-filter:blur(18px) saturate(125%); display:flex; align-items:center; gap:8px; color:#fff; box-shadow:0 8px 30px rgba(0,0,0,.15); transition:opacity .16s linear, transform .16s linear; }
-.terminal-cinematic-brand { display:flex; align-items:center; gap:9px; text-decoration:none; color:#fff; margin-right:auto; min-width:124px; }
-.terminal-cinematic-brand img { width:70px; height:29px; object-fit:contain; object-position:center; background:#fff; border-radius:999px; padding:3px 6px; }
-.terminal-cinematic-brand strong { font:800 10px/1 Inter,Arial,sans-serif; letter-spacing:.16em; text-transform:uppercase; white-space:nowrap; }
-.terminal-cinematic-links { display:flex; align-items:center; gap:3px; }
-.terminal-cinematic-links a { color:rgba(255,255,255,.82); text-decoration:none; font:600 10px/1 Inter,Arial,sans-serif; letter-spacing:.055em; padding:11px 12px; border-radius:999px; transition:background .2s,color .2s; }
+.terminal-title-sequence { position:absolute; inset:0; z-index:3; pointer-events:none; display:flex; align-items:center; justify-content:center; padding:88px 36px 52px; }
+.terminal-ambulance-hero .terminal-title-sequence h2 { position:absolute; width:min(92%,1540px); margin:0; color:#fff; text-align:center; font:500 clamp(118px,7vw,136px)/.96 Inter,Arial,sans-serif; letter-spacing:0; text-wrap:balance; }
+.terminal-title-sequence .terminal-char { display:inline; opacity:0; color:#8fe421; will-change:opacity,color; }
+.terminal-title-detail { display:block; margin-top:34px; color:#fff; font:750 clamp(28px,2vw,34px)/1.3 Inter,Arial,sans-serif; letter-spacing:0; opacity:0; transition:none; }
+
+.terminal-cinematic-nav { position:absolute; z-index:4; top:0; left:0; width:100%; min-height:72px; padding:13px 36px; border:0; border-bottom:1px solid rgba(255,255,255,.14); background:rgba(5,10,14,.72); backdrop-filter:blur(18px) saturate(125%); -webkit-backdrop-filter:blur(18px) saturate(125%); display:flex; align-items:center; gap:24px; color:#fff; box-shadow:0 8px 30px rgba(0,0,0,.10); transition:opacity .16s linear; }
+.terminal-cinematic-brand { display:flex; align-items:center; gap:12px; text-decoration:none; color:#fff; margin-right:auto; min-width:230px; }
+.terminal-cinematic-brand img { content:url('../images/canby-community-clinic-logo-transparent.png'); width:124px; height:38px; object-fit:contain; object-position:left center; }
+.terminal-cinematic-brand strong { font:800 11px/1 Inter,Arial,sans-serif; letter-spacing:.12em; text-transform:uppercase; white-space:nowrap; }
+.terminal-cinematic-links { display:flex; align-items:center; gap:8px; }
+.terminal-cinematic-links a { color:rgba(255,255,255,.86); text-decoration:none; font:650 13px/1 Inter,Arial,sans-serif; letter-spacing:0; padding:11px 13px; border-radius:6px; transition:background .2s,color .2s; }
 .terminal-cinematic-links a:hover { color:#fff; background:rgba(255,255,255,.10); }
 .terminal-cinematic-cta { color:#06121f!important; background:#fff!important; }
 
@@ -29,15 +72,28 @@ body.has-terminal-hero { background:#fff; }
 .terminal-loader i::after { content:""; position:absolute; inset:0; background:#fff; transform:translateX(-100%); animation:terminalLoad 1.15s ease-in-out infinite; }
 @keyframes terminalLoad { 55%,100% { transform:translateX(100%); } }
 
-@media (max-width:760px) {
-  .terminal-ambulance-hero { height:200svh; }
-  .terminal-cinematic-nav { top:12px; width:calc(100% - 24px); padding:6px 7px 6px 10px; min-height:44px; }
+@media (max-width:760px), (max-aspect-ratio:4/5) {
+  .terminal-ambulance-hero { height:300svh; }
+  .terminal-cinematic-nav { min-height:60px; padding:10px 12px; gap:8px; }
   .terminal-cinematic-brand { min-width:0; }
-  .terminal-cinematic-brand img { width:58px; height:25px; }
+  .terminal-cinematic-brand img { width:88px; height:30px; }
   .terminal-cinematic-brand strong { display:none; }
-  .terminal-cinematic-links a { padding:10px 8px; font-size:8px; }
+  .terminal-cinematic-links a { padding:10px 9px; font-size:11px; }
   .terminal-cinematic-links a:nth-child(2), .terminal-cinematic-links a:nth-child(3) { display:none; }
   .terminal-scroll-label { bottom:18px; }
+  .terminal-vehicle-overlay { left:52%; bottom:12vh; width:172vw; max-width:none; }
+  .terminal-vehicle-logo { left:10.8%; top:29.5%; width:27.5%; }
+  .terminal-vehicle-headlight { width:62vw; height:19vw; }
+  .terminal-vehicle-angle-stage { left:53%; top:51%; width:164vw; max-width:none; }
+  .terminal-vehicle-overhead-wire { width:82vw; max-width:none; }
+  .terminal-vehicle-front-stage { top:52%; width:250vw; max-width:none; }
+  .terminal-clinic-building-sign { top:15%; left:7%; width:86vw; min-height:68px; padding:11px 13px; gap:10px; }
+  .terminal-clinic-building-sign img { width:76px; height:42px; }
+  .terminal-clinic-building-sign strong { font-size:11px; }
+  .terminal-clinic-building-sign small { font-size:8px; white-space:normal; }
+  .terminal-title-sequence { padding:70px 20px 44px; }
+  .terminal-ambulance-hero .terminal-title-sequence h2 { width:calc(100vw - 30px); font-size:58px; line-height:.98; }
+  .terminal-title-detail { max-width:92vw; margin:24px auto 0; font-size:19px; line-height:1.38; }
 }
 
 @media (prefers-reduced-motion:reduce) {

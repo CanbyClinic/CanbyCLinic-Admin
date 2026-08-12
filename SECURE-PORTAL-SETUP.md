@@ -1,35 +1,42 @@
-# Secure patient portal and intake configuration
+# Secure portal production gate
 
-The public GitHub Pages site is a static front end. GitHub's own documentation warns that Pages should not be used for sensitive transactions such as passwords. Do not connect the demographic form to ordinary email, FormSubmit, Google Forms, a generic webhook, or a free-tier database.
+The patient portal now contains real server-side authentication code. It is intentionally disabled until the clinic connects its own approved services. A visual login screen is not evidence of HIPAA compliance, and this project must not be described as production-ready until every gate below is complete.
 
-## What is already built
+## Implemented in this repository
 
-- Animated bilingual entry experience: New Patient / Sign In / Enter Website
-- English and Spanish patient portal launch pages
-- English and Spanish first-page demographic forms
-- Confidentiality notices
-- Appointment follow-up modal
-- No password or patient-form data is stored in localStorage, cookies, the GitHub repository, or browser analytics
+- Email and password sign-up
+- Email verification handoff
+- Login, session refresh, logout, and password recovery
+- Strong-password validation in the browser and on the server
+- HttpOnly, Secure, SameSite session cookies in production
+- Same-origin request checks and basic abuse throttling
+- No authentication tokens in `localStorage` or client-readable cookies
+- Supabase Row Level Security schema for patient-owned profiles
+- A callback queue that accepts basic contact details only
+- Generic clinic notification email with no patient details
+- Security headers and a restrictive Content Security Policy
+- Fail-closed behavior when required credentials are missing
 
-## Required before enabling submissions
+## Required clinic-owned services
 
-Choose an approved patient-portal/intake provider, complete the clinic's security risk analysis, and sign a Business Associate Agreement when required. The solution should support authentication, role-based access, encryption, audit logs, backup/recovery, breach procedures, and secure staff access.
+1. Create a clinic-owned Supabase organization and production project.
+2. Execute `supabase/schema.sql` in the production project.
+3. Enable email confirmation and configure the production redirect URL.
+4. Sign the required Business Associate Agreement and enable the Supabase HIPAA add-on before protected health information is introduced.
+5. Configure an approved transactional email provider. Confirm whether a BAA or different provider is required for the clinic's use case.
+6. Add the values from `.env.example` to the production hosting environment. Never put the secret key in a browser file or source repository.
+7. Restrict staff access to the contact queue through a separate authenticated administrative system with role-based access and audit logging.
 
-Then edit `assets/js/config.js`:
+## Before production launch
 
-```js
-window.CANBY_CONFIG = {
-  donationCheckoutUrl: "https://verified-donation-provider.example/...",
-  portalLoginUrl: "https://secure-portal.example/login",
-  portalSignupUrl: "https://secure-portal.example/register",
-  portalResetUrl: "https://secure-portal.example/forgot-password",
-  secureCallbackUrl: "https://secure-api.example/callback",
-  secureIntakeUrl: "https://secure-api.example/intake"
-};
-```
+- Complete the clinic's security risk analysis and vendor review.
+- Enable MFA for staff and consider MFA for patients based on the clinic's risk analysis.
+- Configure rate limiting or WAF controls at the hosting edge; the in-code limiter is only a secondary safeguard.
+- Configure database backups, point-in-time recovery, log retention, incident response, breach procedures, and staff offboarding.
+- Test verification, recovery, expired-session, revoked-session, and account-lockout paths on the production domain.
+- Conduct accessibility, privacy, penetration, and legal reviews.
+- Connect the portal to the approved EHR or patient-record system only through documented server-side interfaces.
 
-The secure intake endpoint must accept JSON over HTTPS, authenticate/authorize clinic staff on the receiving side, encrypt data at rest and in transit, maintain access/audit records, and avoid placing PHI in ordinary notification email. A notification email may say that a new secure submission is waiting; staff should open the protected system to read it.
+## Contact request boundary
 
-## Fields intentionally not collected on the public page
-
-Social Security numbers and driver's-license numbers are shown as items to complete directly with clinic staff or in the approved portal. They should not be sent by ordinary email.
+The public callback form does not include a free-text message field. It must not be expanded to collect symptoms, diagnoses, medications, dates of birth, insurance identifiers, or other health details. Staff receive only a generic email telling them that a request is waiting in the protected queue.
