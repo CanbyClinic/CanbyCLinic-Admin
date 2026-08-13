@@ -1,0 +1,20 @@
+'use strict';
+const { body, email, json, method, rateLimit, sameOrigin, text } = require('./_shared');
+function strong(v){return v.length>=12&&v.length<=256&&/[a-z]/.test(v)&&/[A-Z]/.test(v)&&/\d/.test(v)&&/[^A-Za-z0-9]/.test(v)}
+function date(v){const x=String(v||'');return /^\d{4}-\d{2}-\d{2}$/.test(x)?x:null}
+module.exports=async function handler(req,res){
+ if(!method(req,res,['POST'])||!sameOrigin(req,res)||!rateLimit(req,res,'patient-intake',4,60*60*1000))return;
+ const i=body(req), cleanEmail=email(i.email), password=String(i.password||'');
+ const rec={email:cleanEmail,mobile_phone:text(i.mobilePhone,30),first_name:text(i.firstName,80),last_name:text(i.lastName,80),preferred_name:text(i.preferredName,80)||null,date_of_birth:date(i.dob),language:text(i.language,40)||null,medical_record_id:text(i.medicalRecordId,80)||null,address:text(i.address,160),city:text(i.city,80),state:text(i.state,40),zip:text(i.zip,20),pronouns:text(i.pronouns,80)||null,translator:text(i.translator,20)||null,emergency_name:text(i.emergencyName,120),emergency_relationship:text(i.emergencyRelationship,80),emergency_phone:text(i.emergencyPhone,30),referring_physician:text(i.referringPhysician,160)||null,insurance_company:text(i.insuranceCompany,160)||null,insurance_member_id:text(i.insuranceMemberId,120)||null,insurance_group:text(i.insuranceGroup,120)||null,subscriber_first:text(i.subscriberFirst,80)||null,subscriber_last:text(i.subscriberLast,80)||null,subscriber_relationship:text(i.subscriberRelationship,80)||null,subscriber_dob:date(i.subscriberDob),ethnicity:text(i.ethnicity,80)||null,gender_identity:text(i.genderIdentity,120)||null,sex_at_birth:text(i.sexAtBirth,40)||null,veteran:text(i.veteran,20)||null,privacy_ack:i.privacyAck==='yes',status:'new'};
+ if(!cleanEmail||!strong(password)||!rec.first_name||!rec.last_name||!rec.mobile_phone||!rec.date_of_birth||!rec.address||!rec.city||!rec.state||!rec.zip||!rec.emergency_name||!rec.emergency_relationship||!rec.emergency_phone||!rec.privacy_ack)return json(res,400,{message:'Check the required fields and password rules.'});
+ const url=String(process.env.SUPABASE_URL||'').replace(/\/$/,'');const service=process.env.SUPABASE_SECRET_KEY||process.env.SUPABASE_SERVICE_ROLE_KEY||'';const anon=process.env.SUPABASE_ANON_KEY||'';const site=String(process.env.SITE_URL||'').replace(/\/$/,'');const resend=process.env.RESEND_API_KEY||'';const from=process.env.CONTACT_FROM_EMAIL||'';const clinic=process.env.CLINIC_EMAIL||'info@puravidacc.org';
+ if(!url||!service||!anon||!site.startsWith('https://'))return json(res,503,{message:'Protected patient registration is not connected yet. Please call the clinic.',code:'NOT_CONFIGURED'});
+ try{
+  const signup=await fetch(`${url}/auth/v1/signup?redirect_to=${encodeURIComponent(site+'/patient-portal.html')}`,{method:'POST',headers:{apikey:anon,Authorization:`Bearer ${anon}`,'Content-Type':'application/json'},body:JSON.stringify({email:cleanEmail,password,data:{first_name:rec.first_name,last_name:rec.last_name}})});
+  const sd=await signup.json().catch(()=>({})); if(!signup.ok) return json(res,400,{message:'The account could not be created. Check the email and password or call the clinic.'});
+  rec.user_id=sd.user?.id||null;
+  const ins=await fetch(`${url}/rest/v1/patient_intakes`,{method:'POST',headers:{apikey:service,Authorization:`Bearer ${service}`,'Content-Type':'application/json',Prefer:'return=minimal'},body:JSON.stringify(rec)});if(!ins.ok)throw new Error('storage');
+  if(resend&&from) await fetch('https://api.resend.com/emails',{method:'POST',headers:{Authorization:`Bearer ${resend}`,'Content-Type':'application/json'},body:JSON.stringify({from,to:[clinic],subject:'New protected patient registration received',text:'A new protected patient registration is available in the approved clinic data system. No patient details are included in this email.'})}).catch(()=>{});
+  return json(res,202,{ok:true,message:'Registration received. Check your email to verify your account.'});
+ }catch(_){return json(res,502,{message:'The protected registration could not be completed. Please call the clinic.'})}
+};

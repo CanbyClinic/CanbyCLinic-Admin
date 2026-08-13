@@ -1,0 +1,2 @@
+Security contact: configure a clinic-owned security contact before launch.
+Do not submit patient information to this address.

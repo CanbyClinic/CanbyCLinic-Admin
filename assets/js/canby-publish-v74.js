@@ -34,5 +34,5 @@
     const form=q('#patientLogin'),status=q('#loginStatus');if(!form)return;
     form.addEventListener('submit',async e=>{e.preventDefault();const staticHost=location.hostname.endsWith('github.io')||location.protocol==='file:'||location.hostname==='127.0.0.1'||location.hostname==='localhost';if(staticHost){status.textContent='Secure authentication backend is not connected on this preview. No credentials were sent.';return}status.textContent='Signing in…';try{const res=await fetch('/api/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.fromEntries(new FormData(form).entries()))});if(!res.ok)throw new Error();location.href='patient-dashboard.html'}catch(err){status.textContent='Sign-in failed. Check your information or contact the clinic.'}})
   }
-  document.addEventListener('DOMContentLoaded',()=>{nav();classify();motion();intake();login()});
+  document.addEventListener('DOMContentLoaded',()=>{nav();classify();motion()});
 })();
