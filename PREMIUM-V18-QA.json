@@ -1,0 +1,36 @@
+{
+  "build": "premium-v18-organic-hero-20260819",
+  "scope": "English homepage hero only",
+  "copy": {
+    "unrequestedHeroLabels": 0,
+    "messages": [
+      "Care that spreads within the community.",
+      "Come visit Canby Community Clinic.",
+      "7601 Canby Ave #6B · Reseda, CA 91335",
+      "Get real care now."
+    ],
+    "actions": ["Book appointment", "Call clinic"]
+  },
+  "animation": {
+    "renderer": "local WebGL signed-distance field",
+    "imageSwaps": 0,
+    "maximumVisibleForms": 6,
+    "scrollLinked": true,
+    "reverseScrollVerified": true,
+    "ambientMotion": "subtle membrane movement only",
+    "maximumCanvasBackingResolution": "3840x2160"
+  },
+  "typing": {
+    "completedCharacters": "white",
+    "currentCharacter": "#73e3a7",
+    "maximumSimultaneousHighlightedCharacters": 1
+  },
+  "browser": {
+    "desktopViewportChecked": "1440x900",
+    "responsiveNarrowLayoutChecked": true,
+    "horizontalOverflow": false,
+    "consoleErrorsOrWarnings": 0,
+    "handoffOpacityAtEnd": 1,
+    "ctaButtonsPresent": 2
+  }
+}

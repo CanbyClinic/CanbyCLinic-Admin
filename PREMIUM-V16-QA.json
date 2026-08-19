@@ -1,0 +1,38 @@
+{
+  "build": "premium-v16-cell-division-20260819",
+  "hero": {
+    "render": "scroll-smoothed 2D canvas",
+    "maximumBackingResolution": "3840x2160",
+    "divisionGenerations": 6,
+    "maximumCells": 64,
+    "copyReveal": "character-by-character, scroll-linked",
+    "leadingLetterColor": "#63e8a5",
+    "reducedMotionFallback": true
+  },
+  "siteAudit": {
+    "htmlPages": 63,
+    "routeFailures": 0,
+    "missingLocalAssets": 0,
+    "duplicateHtmlIds": 0,
+    "editorialPhotoPlacements": 81,
+    "uniqueEditorialPhotoIds": 81,
+    "reusedEditorialPhotoIds": 0
+  },
+  "browserChecks": {
+    "representativePages": [
+      "index.html",
+      "appointments.html",
+      "contact.html",
+      "health-articles.html",
+      "volunteer-medical.html",
+      "es-citas.html",
+      "hy-new-patient.html",
+      "pregnancy-first-weeks-prenatal-care.html"
+    ],
+    "horizontalOverflow": false,
+    "brokenImages": 0,
+    "oversizedMainElements": 0,
+    "consoleErrorsOrWarnings": 0,
+    "portraitSafeObjectFit": "contain"
+  }
+}

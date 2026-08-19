@@ -1,0 +1,31 @@
+{
+  "build": "premium-v19-host-ready-20260819",
+  "auditDate": "2026-08-19",
+  "result": "pass",
+  "htmlPages": 63,
+  "uniqueEditorialPhotos": 81,
+  "editorialPhotoPlacements": 81,
+  "duplicateEditorialPhotos": 0,
+  "duplicateDocumentIds": 0,
+  "brokenLocalReferences": 0,
+  "javascriptSyntax": "pass",
+  "cssBraceBalance": "pass",
+  "browserChecks": {
+    "heroCopyCentered": true,
+    "scrollTypingActiveCharacterGreen": true,
+    "horizontalOverflow": 0,
+    "consoleWarningsOrErrors": 0,
+    "representativeTemplatesChecked": [
+      "index.html",
+      "services.html",
+      "appointments.html",
+      "about.html",
+      "health-articles.html",
+      "pregnancy-first-weeks-prenatal-care.html",
+      "privacy.html",
+      "volunteer.html",
+      "es.html",
+      "hy.html"
+    ]
+  }
+}

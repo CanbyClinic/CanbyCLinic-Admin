@@ -1,35 +1,27 @@
-# Backend integration notes
+# Backend Integration Notes — Canby Community Clinic V4
 
-## Current boundary
+The V4 portal is a front-end prototype only. It demonstrates the intended patient experience, but it does not connect to an EHR, scheduling system, pharmacy, laboratory, secure messaging service, or clinical database.
 
-The site includes working authentication and callback API routes, but production services are not connected in this local copy. The UI reports that state and does not pretend to accept patient credentials or contact requests.
+## Replace the demo layer before production
 
-The portal currently provides account access and safe navigation to patient resources. It does not expose EHR records, appointments, prescriptions, laboratory results, clinical messaging, or document uploads.
+1. Connect patient identity and authentication.
+2. Replace local browser storage with protected server-side records.
+3. Add verified password reset and multi-factor authentication.
+4. Add role-based access controls and audit logs.
+5. Connect appointments, patient-facing notes, prescriptions, results, documents, and secure messaging.
+6. Connect the first-page demographic intake to the clinic's approved secure workflow.
+7. Configure staff notifications without placing sensitive patient details in ordinary email.
+8. Complete privacy, security, legal, and accessibility reviews before launch.
 
-## Environment
+## Configuration file
 
-Copy the variable names in `.env.example` into the production host and supply clinic-owned values. Keep `SUPABASE_SECRET_KEY` and `RESEND_API_KEY` server-only.
+Public service URLs are reserved in `assets/js/config.js`:
 
-## Database
+- `donationCheckoutUrl`
+- `portalLoginUrl`
+- `portalSignupUrl`
+- `portalResetUrl`
+- `secureCallbackUrl`
+- `secureIntakeUrl`
 
-Run `supabase/schema.sql`. The schema creates:
-
-- Patient profiles protected by Row Level Security
-- A restricted callback queue with no public database policies
-- A signup trigger that creates a profile owned by the authenticated user
-
-## API routes
-
-- `POST /api/auth/signup`
-- `POST /api/auth/login`
-- `GET /api/auth/session`
-- `POST /api/auth/logout`
-- `POST /api/auth/recover`
-- `POST /api/auth/accept-session`
-- `POST /api/auth/update-password`
-- `GET /api/auth/status`
-- `POST /api/contact`
-
-## Not a compliance certification
-
-Code alone cannot make a clinic HIPAA compliant. Vendor agreements, configuration, operational safeguards, workforce procedures, monitoring, incident response, and a documented risk analysis are production gates. See `SECURE-PORTAL-SETUP.md`.
+The current front-end portal intentionally uses local browser storage and displays a warning not to enter real medical information.

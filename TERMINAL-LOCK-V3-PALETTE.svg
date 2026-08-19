@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#F4EFE5"/>
+  <text x="90" y="105" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#071816">CANBY — TERMINAL LOCK V3</text>
+  <text x="90" y="150" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#596963">Forest ink + warm paper + mineral editorial accents</text>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="20">
+    <rect x="90" y="225" width="320" height="230" rx="14" fill="#071816"/><text x="115" y="420" fill="#fff">FOREST INK  #071816</text>
+    <rect x="435" y="225" width="320" height="230" rx="14" fill="#1B6074"/><text x="460" y="420" fill="#fff">MINERAL  #1B6074</text>
+    <rect x="780" y="225" width="320" height="230" rx="14" fill="#438B6D"/><text x="805" y="420" fill="#fff">BOTANICAL  #438B6D</text>
+    <rect x="1125" y="225" width="320" height="230" rx="14" fill="#A8D85F"/><text x="1150" y="420" fill="#071816">CHARTREUSE  #A8D85F</text>
+    <rect x="90" y="500" width="320" height="230" rx="14" fill="#DB6748"/><text x="115" y="695" fill="#fff">TERRACOTTA  #DB6748</text>
+    <rect x="435" y="500" width="320" height="230" rx="14" fill="#76536A"/><text x="460" y="695" fill="#fff">PLUM  #76536A</text>
+    <rect x="780" y="500" width="320" height="230" rx="14" fill="#DCE8E3"/><text x="805" y="695" fill="#071816">MIST  #DCE8E3</text>
+    <rect x="1125" y="500" width="320" height="230" rx="14" fill="#FBF8F1" stroke="#071816" stroke-opacity=".15"/><text x="1150" y="695" fill="#071816">WARM WHITE  #FBF8F1</text>
+  </g>
+</svg>

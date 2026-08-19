@@ -1,0 +1,20 @@
+{
+  "build": "Canby-Community-Clinic-PREMIUM-20260817-FIRST-PASS",
+  "audit_items": 100,
+  "status_counts": {
+    "DONE": 33,
+    "ASSET GATE": 8,
+    "PARTIAL": 11,
+    "OPEN": 48
+  },
+  "checks": {
+    "homepages_new_terminal_film_hero": true,
+    "retired_ambulance_asset_directory_removed": true,
+    "retired_dark_hero_renders_removed": true,
+    "sequence_manifest_present": true,
+    "production_frames_ready": false,
+    "production_frames_gate": "awaiting-production-frames",
+    "new_js_present": true,
+    "new_css_present": true
+  }
+}

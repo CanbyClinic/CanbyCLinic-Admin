@@ -1,0 +1,218 @@
+/* CANBY PREMIUM RELEASE PASS — 2026-08-17
+   Purpose: remove the low-poly hero path, tighten the visual system, and make
+   the production cinematic a deterministic offline-rendered frame sequence. */
+
+:root{
+  --p17-ink:#07100d;
+  --p17-forest:#0b2d23;
+  --p17-green:#168a57;
+  --p17-mint:#8ee7b6;
+  --p17-paper:#f6f4ed;
+  --p17-paper-2:#fcfbf7;
+  --p17-line:rgba(7,16,13,.13);
+  --p17-max:1680px;
+  --p17-text:760px;
+  --p17-ease:cubic-bezier(.16,1,.3,1);
+}
+
+html{scroll-padding-top:82px;background:var(--p17-paper)}
+body.premium-final{background:var(--p17-paper);letter-spacing:-.004em}
+body.premium-final main>section{scroll-margin-top:82px}
+body.premium-final .container,
+body.premium-final .cf-shell{width:min(var(--p17-max),calc(100% - clamp(40px,6vw,112px)));}
+
+/* ---------- Header: cleaner hierarchy, safer mega menus ---------- */
+body.premium-final .cf-header{min-height:78px;border-bottom-color:rgba(7,16,13,.10);box-shadow:none}
+body.premium-final .cf-header-inner{min-height:78px;max-width:var(--p17-max);gap:clamp(18px,2.5vw,44px)}
+body.premium-final .cf-brand{min-width:164px}
+body.premium-final .cf-brand-word{font-size:20px;letter-spacing:-.035em;font-weight:720}
+body.premium-final .cf-brand small{font-size:8px;letter-spacing:.145em;margin-left:8px;opacity:.72}
+body.premium-final .cf-main-nav{gap:clamp(13px,1.5vw,28px)}
+body.premium-final .cf-nav-trigger{padding-block:30px 27px;font-size:10px;letter-spacing:.09em}
+body.premium-final .cf-mega{top:calc(100% - 1px);width:min(720px,calc(100vw - 40px));padding:30px;gap:38px;border-color:rgba(7,16,13,.11);box-shadow:0 36px 90px rgba(7,16,13,.13)}
+body.premium-final .cf-mega-links a{font-size:18px;padding:12px 0}
+body.premium-final .cf-mega-note strong{font-size:24px}
+body.premium-final .cf-portal{min-height:42px;padding-inline:17px}
+body.premium-final .cf-language-button,
+body.premium-final .cf-menu-button{height:42px}
+
+/* Keep navigation legible over the film hero without frosted-glass clutter. */
+body.has-terminal-hero:not(.terminal-past) .cf-header{background:linear-gradient(180deg,rgba(2,7,5,.76),rgba(2,7,5,.28) 62%,transparent);border-color:rgba(255,255,255,.11)}
+body.has-terminal-hero:not(.terminal-past) .cf-nav-trigger,
+body.has-terminal-hero:not(.terminal-past) .cf-phone{color:#fff;text-shadow:0 2px 16px rgba(0,0,0,.34)}
+
+/* ---------- New Terminal-film hero ---------- */
+.terminal-film-hero{
+  --terminal-progress:0;
+  position:relative;
+  height:300svh;
+  min-height:2100px;
+  background:#06100c;
+  color:#fff;
+  isolation:isolate;
+}
+.terminal-film-hero.is-fallback-only{height:100svh;min-height:720px}
+.terminal-film-hero__sticky{position:sticky;top:0;height:100svh;overflow:hidden;background:#06100c}
+.terminal-film-hero.is-fallback-only .terminal-film-hero__sticky{position:relative}
+.terminal-film-hero__stage{position:absolute;inset:0;background:#06100c;overflow:hidden}
+.terminal-film-hero__canvas,.terminal-film-hero__fallback{position:absolute;inset:0;width:100%;height:100%;display:block}
+.terminal-film-hero__canvas{z-index:2;opacity:0;transition:opacity .3s ease;background:#06100c}
+.terminal-film-hero__canvas.is-live{opacity:1}
+.terminal-film-hero__fallback{z-index:1;object-fit:cover;object-position:58% 48%;filter:saturate(.72) contrast(1.04) brightness(.54);transform:scale(1.02);transition:opacity .3s ease}
+.terminal-film-hero__fallback.is-hidden{opacity:0}
+.terminal-film-hero__wash{position:absolute;z-index:3;inset:0;pointer-events:none;background:
+  linear-gradient(90deg,rgba(2,8,6,.84) 0%,rgba(2,8,6,.58) 34%,rgba(2,8,6,.10) 66%,rgba(2,8,6,.26) 100%),
+  linear-gradient(180deg,rgba(2,8,6,.22),transparent 35%,rgba(2,8,6,.58) 100%)}
+.terminal-film-hero.is-sequence-ready .terminal-film-hero__wash{background:linear-gradient(180deg,rgba(1,4,3,.18),transparent 38%,rgba(1,4,3,.48) 100%)}
+.terminal-film-hero__grain{position:absolute;z-index:4;inset:-15%;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.85'/%3E%3C/svg%3E");background-size:180px 180px}
+.terminal-film-hero__chrome{position:absolute;z-index:6;inset:0;pointer-events:none}
+.terminal-film-hero__index{position:absolute;left:clamp(26px,3.4vw,62px);top:clamp(108px,12vh,150px);display:flex;flex-direction:column;gap:4px;font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.66)}
+.terminal-film-hero__copy{position:absolute;left:clamp(28px,6.3vw,132px);bottom:clamp(76px,10vh,126px);width:min(780px,calc(100% - 56px));pointer-events:auto}
+.terminal-film-hero__eyebrow{margin:0 0 22px;color:var(--p17-mint);font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase}
+.terminal-film-hero__copy h1{margin:0;color:#fff;font-size:clamp(4.3rem,8.6vw,9.7rem);font-weight:590;line-height:.82;letter-spacing:-.072em;max-width:8.9ch;text-wrap:balance;text-shadow:0 10px 45px rgba(0,0,0,.22)}
+.terminal-film-hero__copy h1 span{display:block}
+.terminal-film-hero__body{max-width:560px;margin:27px 0 0;color:rgba(255,255,255,.78);font-size:clamp(1rem,1.25vw,1.24rem);line-height:1.55;letter-spacing:-.015em}
+.terminal-film-hero__actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+.terminal-film-hero__actions a{min-height:48px;padding:0 18px;display:inline-flex;align-items:center;text-decoration:none;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(255,255,255,.36);transition:transform .25s var(--p17-ease),background .25s,color .25s,border-color .25s}
+.terminal-film-hero__actions a:hover{transform:translateY(-2px)}
+.terminal-film-hero__primary{background:#fff;color:#07100d;border-color:#fff!important}
+.terminal-film-hero__primary:hover{background:var(--p17-mint);border-color:var(--p17-mint)!important}
+.terminal-film-hero__secondary{color:#fff;background:rgba(2,8,6,.10)}
+.terminal-film-hero__timeline{position:absolute;right:clamp(26px,3.5vw,64px);top:50%;transform:translateY(-50%);height:min(310px,38vh);display:grid;grid-template-rows:auto 1fr auto;justify-items:center;gap:11px;font-family:var(--mono);font-size:8px;letter-spacing:.12em;color:rgba(255,255,255,.52)}
+.terminal-film-hero__timeline i{position:relative;width:1px;height:100%;background:rgba(255,255,255,.2);overflow:hidden}
+.terminal-film-hero__timeline b{position:absolute;inset:0;background:var(--p17-mint);transform:scaleY(var(--terminal-progress));transform-origin:top;will-change:transform}
+.terminal-film-hero__scroll{position:absolute;right:clamp(28px,4vw,72px);bottom:29px;font-family:var(--mono);font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.64)}
+.terminal-film-hero__scroll span{display:inline-block;margin-left:8px}
+.terminal-film-hero.is-fallback-only .terminal-film-hero__timeline{display:none}
+.terminal-film-hero.is-fallback-only .terminal-film-hero__scroll{opacity:.58}
+
+/* ---------- Typography and section rhythm ---------- */
+body.premium-final h1,body.premium-final h2,body.premium-final h3{font-feature-settings:"kern" 1,"liga" 1}
+body.premium-final .page-hero h1{font-size:clamp(3.5rem,6.4vw,8rem)!important;line-height:.91!important;max-width:10.8ch!important}
+body.premium-final .page-hero p{max-width:58ch;font-size:clamp(1.05rem,1.22vw,1.28rem);line-height:1.58}
+body.premium-final .page-hero-grid{width:min(var(--p17-max),calc(100% - clamp(40px,6vw,112px)));gap:clamp(40px,5vw,92px)}
+body.premium-final .page-hero-grid>div:first-child{padding-top:clamp(122px,11vw,176px)}
+body.premium-final .page-hero-visual{aspect-ratio:5/4!important;max-height:740px;box-shadow:none;background:#dfe5df}
+body.premium-final .page-hero-visual img{object-position:50% 28%!important;filter:none!important;scale:1!important}
+body.premium-final .eyebrow,body.premium-final .cf-kicker{letter-spacing:.12em}
+
+/* Sections need different scale and pacing instead of a repeated card-stack cadence. */
+body.premium-final .section{padding-block:clamp(92px,9.4vw,164px)}
+body.premium-final .section-sm{padding-block:clamp(62px,6.5vw,104px)}
+body.premium-final .section-title{max-width:920px;margin-bottom:clamp(46px,5.5vw,84px)}
+body.premium-final .section-title p{max-width:var(--p17-text);font-size:1.08rem;line-height:1.7}
+body.premium-final .cf-home-section{overflow:clip}
+body.premium-final .cf-home-section+.cf-home-section{border-top:1px solid rgba(7,16,13,.07)}
+body.premium-final .cf-home-inner{max-width:var(--p17-max)}
+
+/* ---------- Media art direction ---------- */
+body.premium-final .media-frame,
+body.premium-final .article-hero-image,
+body.premium-final .cf-story-media,
+body.premium-final .cf-care-visual,
+body.premium-final .cf-map-visual{background:#dfe4df;overflow:hidden}
+body.premium-final .media-frame img,
+body.premium-final .article-hero-image img,
+body.premium-final .cf-story-media img,
+body.premium-final .cf-care-visual img,
+body.premium-final .cf-map-visual img{filter:none!important;transition:transform .8s var(--p17-ease);transform-origin:center center}
+body.premium-final a:hover .cf-story-media img,
+body.premium-final a:focus-visible .cf-story-media img{transform:scale(1.025)!important}
+body.premium-final .cf-story-main .cf-story-media{aspect-ratio:16/10}
+body.premium-final .cf-story-small .cf-story-media{aspect-ratio:4/3}
+
+/* ---------- Cards / UI: quieter, more architectural ---------- */
+body.premium-final .card,
+body.premium-final .service-card,
+body.premium-final .resource-action-card,
+body.premium-final .dashboard-card{padding:clamp(28px,3vw,50px);min-height:240px;background:transparent;transition:background .3s var(--p17-ease),transform .3s var(--p17-ease)}
+body.premium-final .card:hover,
+body.premium-final .service-card:hover,
+body.premium-final .resource-action-card:hover{background:rgba(255,255,255,.46)}
+body.premium-final .card p,
+body.premium-final .service-card p{line-height:1.68}
+body.premium-final .btn,
+body.premium-final .cf-button{min-height:50px;padding-inline:20px;letter-spacing:.09em;transition:transform .25s var(--p17-ease),background .25s,color .25s,border-color .25s}
+body.premium-final .btn:focus-visible,
+body.premium-final .cf-button:focus-visible,
+body.premium-final a:focus-visible,
+body.premium-final button:focus-visible{outline:2px solid var(--p17-green);outline-offset:4px}
+
+/* ---------- Forms ---------- */
+body.premium-final input,
+body.premium-final select,
+body.premium-final textarea{min-height:50px;border-color:rgba(7,16,13,.18);background:rgba(255,255,255,.58);border-radius:0}
+body.premium-final textarea{min-height:140px}
+body.premium-final input:focus,
+body.premium-final select:focus,
+body.premium-final textarea:focus{outline:2px solid rgba(22,138,87,.3);outline-offset:1px;border-color:var(--p17-green)}
+
+/* ---------- Footer ---------- */
+body.premium-final .cf-footer{background:#06100c;color:#f3f6f2;border-top:0}
+body.premium-final .cf-footer p,
+body.premium-final .cf-footer a{color:rgba(243,246,242,.72)}
+body.premium-final .cf-footer a:hover{color:#fff}
+body.premium-final .cf-footer-safety{border-color:rgba(255,255,255,.12)}
+body.premium-final .cf-footer-top{border-color:rgba(255,255,255,.12)}
+body.premium-final .cf-footer-bottom{border-color:rgba(255,255,255,.12);color:rgba(255,255,255,.52)}
+
+/* ---------- Performance containment below the fold ---------- */
+@supports (content-visibility:auto){
+  body.premium-final main>section:not(:first-child){content-visibility:auto;contain-intrinsic-size:900px}
+  body.premium-final .terminal-film-hero{content-visibility:visible;contain:none}
+}
+
+/* ---------- Large displays ---------- */
+@media (min-width:1900px){
+  body.premium-final .cf-header-inner,
+  body.premium-final .page-hero-grid,
+  body.premium-final .cf-home-inner{max-width:1780px}
+  .terminal-film-hero__copy{left:max(7vw,140px)}
+  .terminal-film-hero__copy h1{font-size:9.8rem}
+}
+
+/* ---------- Tablet / mobile ---------- */
+@media (max-width:1180px){
+  body.premium-final .cf-header-inner{grid-template-columns:auto 1fr;}
+  body.premium-final .cf-main-nav{display:none}
+  body.premium-final .cf-header-actions{justify-self:end}
+  body.premium-final .cf-menu-button{display:inline-flex;align-items:center}
+  .terminal-film-hero__copy{width:min(680px,calc(100% - 84px))}
+  .terminal-film-hero__timeline{right:24px}
+}
+
+@media (max-width:760px){
+  html{scroll-padding-top:68px}
+  body.premium-final .container,body.premium-final .cf-shell{width:calc(100% - 36px)}
+  body.premium-final .cf-header,body.premium-final .cf-header-inner{min-height:68px}
+  body.premium-final .cf-phone,body.premium-final .cf-language{display:none}
+  body.premium-final .cf-portal{min-height:38px;padding-inline:12px}
+  body.premium-final .cf-menu-button{height:38px}
+  .terminal-film-hero{height:260svh;min-height:1650px}
+  .terminal-film-hero.is-fallback-only{height:100svh;min-height:680px}
+  .terminal-film-hero__fallback{object-position:68% 50%}
+  .terminal-film-hero__wash{background:linear-gradient(180deg,rgba(2,8,6,.32),rgba(2,8,6,.18) 35%,rgba(2,8,6,.86) 80%,rgba(2,8,6,.96))}
+  .terminal-film-hero__index{left:19px;top:92px}
+  .terminal-film-hero__copy{left:20px;right:20px;bottom:86px;width:auto}
+  .terminal-film-hero__copy h1{font-size:clamp(3.65rem,17vw,5.7rem);line-height:.86;letter-spacing:-.066em;max-width:8ch}
+  .terminal-film-hero__body{font-size:.98rem;max-width:33ch;margin-top:20px}
+  .terminal-film-hero__actions{margin-top:23px}
+  .terminal-film-hero__actions a{min-height:46px;padding-inline:15px}
+  .terminal-film-hero__timeline{display:none}
+  .terminal-film-hero__scroll{right:20px;bottom:22px;font-size:8px;max-width:45vw;text-align:right}
+  body.premium-final .page-hero-grid{width:100%;display:block}
+  body.premium-final .page-hero-grid>div:first-child{width:calc(100% - 36px);margin-inline:auto;padding:108px 0 52px}
+  body.premium-final .page-hero h1{font-size:clamp(3rem,14vw,5.3rem)!important;max-width:9.5ch!important}
+  body.premium-final .page-hero-visual{margin:0!important;aspect-ratio:5/4!important;max-height:none}
+  body.premium-final .section{padding-block:76px}
+  body.premium-final .section-sm{padding-block:54px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .terminal-film-hero{height:100svh!important;min-height:680px!important}
+  .terminal-film-hero__sticky{position:relative!important}
+  .terminal-film-hero__grain{display:none}
+  .terminal-film-hero__canvas{display:none}
+  .terminal-film-hero__fallback{opacity:1!important;transform:none!important}
+  body.premium-final *{scroll-behavior:auto!important}
+}

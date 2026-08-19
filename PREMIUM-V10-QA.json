@@ -1,0 +1,28 @@
+{
+  "build": "premium-v10-20260817",
+  "html_pages": 69,
+  "links_scanned": 4176,
+  "images": 84,
+  "remote_pexels_images": 81,
+  "empty_alt_states": 64,
+  "static_issues": [],
+  "appointment_pages": [
+    "appointments.html",
+    "es-citas.html",
+    "hy-appointments.html"
+  ],
+  "volunteer_landing_pages": [
+    "volunteer.html",
+    "es-voluntariado.html",
+    "hy-volunteer.html"
+  ],
+  "volunteer_application_pages": [
+    "volunteer-medical.html",
+    "volunteer-nonmedical.html",
+    "es-voluntario-medico.html",
+    "es-voluntario-no-medico.html",
+    "hy-volunteer-medical.html",
+    "hy-volunteer-nonmedical.html"
+  ],
+  "browser_runtime_note": "Headless Chromium in this environment is organization-blocked from loading 127.0.0.1, so runtime visual QA was limited to source/static/API checks plus the user-provided screenshots."
+}

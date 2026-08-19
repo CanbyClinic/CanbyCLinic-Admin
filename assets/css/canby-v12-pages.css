@@ -1,0 +1,63 @@
+/* Canby V12 — targeted page components only.
+   IMPORTANT: This file intentionally does not style .cf-header, .cf-brand,
+   .cf-main-nav, .cf-footer, or generic site cards. The V10 premium identity stays locked. */
+
+/* Shared sharp-edged page shell */
+.v12-shell{width:min(1420px,calc(100% - var(--pad)*2));margin-inline:auto;min-width:0}
+.v12-kicker{font-family:var(--mono);font-size:10px;line-height:1.2;font-weight:700;letter-spacing:.095em;text-transform:uppercase;color:var(--green);margin-bottom:18px}
+
+/* START HERE — reference hierarchy, Canby visual language */
+.v12-start-here{background:var(--paper);padding:clamp(86px,8vw,138px) 0 clamp(92px,9vw,150px);border-bottom:1px solid var(--line)}
+.v12-start-head{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr);gap:clamp(44px,7vw,110px);align-items:end;margin-bottom:clamp(42px,5vw,64px)}
+.v12-start-head .v12-kicker{grid-column:1/-1;margin-bottom:-22px}
+.v12-start-head h2{font-family:var(--sans);font-size:clamp(3.6rem,6.2vw,7.4rem);font-weight:560;line-height:.91;letter-spacing:-.065em;margin:0;color:var(--ink);max-width:9.5ch}
+.v12-start-head p{font-size:clamp(1.08rem,1.5vw,1.36rem);line-height:1.55;color:var(--muted);margin:0;max-width:34ch}
+.v12-paths{border-top:1px solid var(--line)}
+.v12-path{display:grid;grid-template-columns:64px minmax(0,1fr) 48px;gap:22px;align-items:center;min-height:122px;padding:24px 6px;border-bottom:1px solid var(--line);text-decoration:none;background:transparent;transition:background .28s var(--ease),padding .28s var(--ease),color .28s var(--ease)}
+.v12-path:first-child{background:#0d6e55;color:#fff;border-color:#0d6e55;padding-inline:26px}
+.v12-path:not(:first-child):hover{background:#e7ece7;padding-inline:24px}
+.v12-path:first-child:hover{background:#085541}
+.v12-path-num{width:42px;height:42px;border:1px solid currentColor;display:grid;place-items:center;font-family:var(--mono);font-size:11px;line-height:1;opacity:.78}
+.v12-path-copy{display:grid;gap:7px;min-width:0}.v12-path-copy strong{font-size:clamp(1.55rem,2.25vw,2.65rem);font-weight:520;letter-spacing:-.04em;line-height:1.02}.v12-path-copy small{font-size:1rem;line-height:1.45;color:var(--muted)}
+.v12-path:first-child .v12-path-copy small{color:rgba(255,255,255,.72)}
+.v12-path-arrow{font-size:28px;justify-self:end;transition:transform .25s var(--ease)}.v12-path:hover .v12-path-arrow{transform:translateX(7px)}
+.v12-start-utility{display:grid;grid-template-columns:1fr 1fr auto;gap:24px;padding-top:22px;font-family:var(--mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.v12-start-utility a{color:var(--ink);font-weight:700;text-decoration:none;text-align:right}
+
+/* APPOINTMENTS — simple structure, premium Canby geometry */
+.v12-appointment-page{background:var(--paper)}
+.v12-appointment{padding:clamp(118px,10vw,166px) 0 clamp(100px,10vw,154px)}
+.v12-appt-head{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(320px,.65fr);gap:clamp(46px,7vw,110px);align-items:end;margin-bottom:clamp(52px,6vw,82px)}
+.v12-appt-head .v12-kicker{grid-column:1/-1;margin-bottom:-28px}
+.v12-appt-head h1{font-family:var(--sans);font-size:clamp(4.4rem,7.4vw,9rem);font-weight:560;line-height:.84;letter-spacing:-.072em;margin:0;max-width:7ch;color:var(--ink)}
+.v12-appt-head p{font-size:clamp(1.08rem,1.45vw,1.34rem);line-height:1.55;color:var(--muted);margin:0 0 8px;max-width:38ch}
+.v12-appt-layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:32px;align-items:start;min-width:0}
+.v12-appt-card{background:#fff;border:1px solid var(--line);padding:clamp(34px,4.3vw,64px);min-width:0;box-shadow:none;border-radius:0}
+.v12-appt-side{display:grid;gap:1px;position:sticky;top:108px;background:var(--line)}
+.v12-side-card{background:#ede9df;padding:34px 30px;border:0;border-radius:0;min-width:0}
+.v12-side-call{background:#0c3026;color:#fff}.v12-side-card small{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.075em;text-transform:uppercase;opacity:.7;margin-bottom:20px}.v12-side-card h2{font-size:clamp(2rem,2.5vw,3rem);line-height:.96;font-weight:520;letter-spacing:-.052em;margin:0 0 16px}.v12-side-card p{margin:0 0 22px;color:var(--muted);line-height:1.55}.v12-side-call p{color:rgba(255,255,255,.67)}.v12-side-card a{font-family:var(--mono);font-size:11px;font-weight:700;text-decoration:none;color:#0b4f3e;letter-spacing:.025em}.v12-side-call a{color:#fff}
+
+/* Keep V10 form semantics, remove soft/rounded treatment */
+.v12-appt-card .v10-form-note{display:flex!important;justify-content:space-between;gap:22px;align-items:center;padding:0 0 26px;margin:0 0 34px;border-bottom:1px solid var(--line);font-size:.95rem;color:var(--muted)}
+.v12-appt-card .v10-form-note a{font-family:var(--mono);font-size:10px;font-weight:700;text-decoration:none;color:#0b4f3e;white-space:nowrap}
+.v12-appt-card .v10-form-section{border:0!important;padding:0!important;margin:0 0 40px!important}
+.v12-appt-card .v10-form-section legend{width:100%;display:flex!important;gap:14px;align-items:center;padding:0 0 17px!important;margin:0 0 22px!important;border-bottom:1px solid var(--line);font-size:clamp(1.5rem,2vw,2rem)!important;line-height:1.05;font-weight:540!important;letter-spacing:-.035em}
+.v12-appt-card .v10-form-section legend span{font-family:var(--mono)!important;font-size:9px!important;letter-spacing:.08em;color:var(--green)!important}
+.v12-appt-card .v10-field-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:20px!important}
+.v12-appt-card .v10-field{display:grid!important;gap:9px!important;min-width:0!important}.v12-appt-card .v10-span-2{grid-column:1/-1!important}
+.v12-appt-card .v10-field>span,.v12-appt-card .v10-control-label,.v12-appt-card .v10-other-date>span{font-family:var(--mono)!important;font-size:9px!important;line-height:1.2;font-weight:700!important;letter-spacing:.06em!important;text-transform:uppercase!important;color:#53605b!important}
+.v12-appt-card input,.v12-appt-card select,.v12-appt-card textarea{width:100%!important;min-height:58px!important;border:1px solid #bfc7c1!important;border-radius:0!important;background:#fbfaf6!important;padding:0 16px!important;font-size:16px!important;color:var(--ink)!important;outline:0!important;box-shadow:none!important}
+.v12-appt-card textarea{padding:15px 16px!important;min-height:116px!important;resize:vertical}.v12-appt-card input:focus,.v12-appt-card select:focus,.v12-appt-card textarea:focus{border-color:#0d6e55!important;box-shadow:inset 3px 0 0 #0d6e55!important;background:#fff!important}
+.v12-appt-card .v10-schedule-grid{display:grid!important;grid-template-columns:minmax(0,1.3fr) minmax(220px,.7fr)!important;gap:28px!important;align-items:start}.v12-appt-card .v10-date-options{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:1px!important;background:var(--line)!important;margin:11px 0 14px!important;border:1px solid var(--line)}
+.v12-appt-card .v10-date-chip{min-height:70px!important;border:0!important;border-radius:0!important;background:#f6f3ec!important;color:var(--ink)!important;padding:10px!important}.v12-appt-card .v10-date-chip small{display:block!important;font-family:var(--mono)!important;font-size:8px!important;text-transform:uppercase!important;letter-spacing:.06em!important;opacity:.65}.v12-appt-card .v10-date-chip strong{display:block!important;font-size:15px!important;margin-top:6px!important}.v12-appt-card .v10-date-chip.is-selected{background:#0d6e55!important;color:#fff!important}.v12-appt-card .v10-time-control,.v12-appt-card .v10-other-date{display:grid!important;gap:9px!important}.v12-appt-card .v10-time-control small{font-size:.84rem;color:var(--muted);line-height:1.45}
+.v12-appt-card .v9-submit{width:100%!important;min-height:62px!important;border-radius:0!important;border:1px solid #0d6e55!important;background:#0d6e55!important;color:#fff!important;display:flex!important;align-items:center!important;justify-content:space-between!important;padding:0 20px!important;font-family:var(--mono)!important;font-size:10px!important;font-weight:700!important;letter-spacing:.06em!important;text-transform:uppercase!important}.v12-appt-card .v9-submit:hover{background:#084f3e!important;border-color:#084f3e!important}.v12-appt-card .v9-privacy-note{color:var(--muted);font-size:.84rem;margin:0 0 18px}
+.v12-appt-card .v9-form-error{margin:0 0 18px;padding:14px;border:1px solid #a93d30;background:#fff7f4;color:#7e241b}.v12-appt-card .v9-form-status{margin-top:16px}
+.v12-appt-card .v9-booking-success{border-radius:0!important}
+
+@media(max-width:1100px){
+ .v12-start-head,.v12-appt-head{grid-template-columns:1fr;gap:22px}.v12-start-head .v12-kicker,.v12-appt-head .v12-kicker{margin-bottom:0}.v12-appt-layout{grid-template-columns:1fr}.v12-appt-side{grid-template-columns:1fr 1fr;position:static;gap:1px}.v12-appt-head h1{max-width:9ch}
+}
+@media(max-width:760px){
+ .v12-shell{width:calc(100% - 40px)}.v12-start-here{padding:72px 0 84px}.v12-start-head h2{font-size:clamp(3.1rem,14vw,5rem)}.v12-path{grid-template-columns:46px minmax(0,1fr) 28px;gap:14px;min-height:106px;padding:20px 0}.v12-path:first-child{padding-inline:16px}.v12-path-copy strong{font-size:1.5rem}.v12-path-copy small{font-size:.9rem}.v12-start-utility{grid-template-columns:1fr;gap:8px}.v12-start-utility a{text-align:left;margin-top:8px}.v12-appointment{padding:98px 0 90px}.v12-appt-head h1{font-size:clamp(4rem,17vw,6.1rem)}.v12-appt-card{padding:26px 20px}.v12-appt-card .v10-form-note{align-items:flex-start;flex-direction:column}.v12-appt-card .v10-field-grid,.v12-appt-card .v10-schedule-grid{grid-template-columns:1fr!important}.v12-appt-card .v10-span-2{grid-column:auto!important}.v12-appt-card .v10-date-options{grid-template-columns:1fr 1fr!important}.v12-appt-side{grid-template-columns:1fr}.v12-side-card{padding:28px 24px}
+}
+@media(max-width:420px){.v12-shell{width:calc(100% - 28px)}.v12-appt-card{padding:22px 14px}.v12-path{grid-template-columns:38px minmax(0,1fr) 22px}.v12-path-num{width:34px;height:34px}}

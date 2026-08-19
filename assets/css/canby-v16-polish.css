@@ -1,0 +1,62 @@
+/* V16 sitewide finish: quiet luxury, safer media crops, and resilient forms. */
+:root{--v16-radius:2px;--v16-focus:#16834c;--v16-field:#fffefa;--v16-line:rgba(8,31,23,.14)}
+html{overflow-x:clip}
+body{overflow-wrap:anywhere;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+main,section,article,form,fieldset,.container,.cf-shell,.v10-shell,.v12-shell{min-width:0}
+img,video,canvas,svg{max-width:100%}
+h1,h2,h3,p{min-width:0}
+h1,h2,h3{text-wrap:balance}
+p,li,dd{text-wrap:pretty}
+
+/* Preserve people and clinical context. Source-ratio scripts still control the frame. */
+.page-hero-visual,.media-frame,.article-hero-image,.cf-story-media,.cf-care-visual{isolation:isolate;background:#e4ebe6!important}
+.page-hero-visual img,.media-frame img,.article-hero-image img,.cf-story-media img,.cf-care-visual img{max-width:none;transition:transform .7s cubic-bezier(.2,.7,.2,1),filter .35s ease!important}
+.page-hero-visual img[data-v10-crop="portrait-safe"],.media-frame img[data-v10-crop="portrait-safe"],img[data-v10-crop="portrait-safe"]{width:100%!important;height:100%!important;max-width:100%!important;object-fit:contain!important;object-position:50% 50%!important;background:linear-gradient(135deg,#dce7e0,#f2eee5)!important}
+.aw-source-portrait img{object-fit:contain!important;object-position:center!important;background:#e4ebe6}
+.cf-story-media img,.cf-care-visual img{object-position:50% 30%!important}
+
+/* Normalize cards and prevent long multilingual copy from escaping its grid. */
+.card,.service-card,.article-card,.resource-action-card,.dashboard-card,.v10-path-card,.v12-side-card{min-width:0;overflow:hidden}
+.card a,.service-card a,.article-card a,.cf-footer a{overflow-wrap:anywhere}
+.grid-2,.grid-3,.contact-grid,.form-grid,.v10-field-grid,.v10-vol-grid,.v12-appt-layout{min-width:0}
+.page-hero-grid>.btn{align-self:center;justify-self:start}
+
+/* Form controls retain a premium rhythm without oversized radios or clipped text. */
+form{max-width:100%}
+fieldset{max-width:100%}
+input,select,textarea,button{box-sizing:border-box;max-width:100%}
+input:not([type="checkbox"]):not([type="radio"]),select,textarea{width:100%;font-size:16px!important;background:var(--v16-field)}
+input[type="checkbox"],input[type="radio"]{width:18px!important;height:18px!important;min-width:18px!important;min-height:18px!important;padding:0!important;flex:0 0 18px}
+textarea{line-height:1.55;resize:vertical}
+label>span,.form-group>label{line-height:1.35}
+input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--v16-focus)!important;outline-offset:2px!important;box-shadow:none!important}
+input:user-invalid,select:user-invalid,textarea:user-invalid{border-color:#a7443f!important}
+.v10-consent,.v9-health-question,.v10-check-group{min-width:0}
+.v10-check-row{min-width:0}
+.v10-check-row span{padding:7px;text-align:center}
+
+/* Consistent section joins and button hit areas. */
+.cf-home>section,.section{scroll-margin-top:78px}
+.btn,.cf-button,.cf-booking-cta,.v9-submit{white-space:normal;text-align:center;line-height:1.25}
+.cf-footer-top>div{min-width:0}
+
+@media(max-width:900px){
+  .page-hero-grid,.grid-2,.grid-3,.contact-grid,.v12-appt-layout{min-width:0}
+  .page-hero-visual img[data-v10-crop="portrait-safe"],.aw-source-portrait img{object-fit:contain!important}
+  .v10-volunteer-copy h1,.v10-vol-form-head h1{max-width:11ch!important}
+}
+@media(max-width:760px){
+  .page-hero h1,body[data-page-kind="article"] .page-hero h1{font-size:clamp(2.8rem,12.4vw,4.65rem)!important;line-height:.92!important;letter-spacing:-.058em!important;max-width:11.5ch!important}
+  .page-hero p{font-size:1rem!important;line-height:1.6!important}
+  .page-hero-grid>div:first-child{overflow:visible}
+  .card,.service-card,.resource-action-card,.dashboard-card{padding:26px 20px!important;min-height:0!important}
+  .v10-vol-grid,.v10-field-grid,.form-grid{grid-template-columns:minmax(0,1fr)!important}
+  .v10-check-row{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .v10-consent{grid-template-columns:18px minmax(0,1fr)!important}
+  .cf-footer-top{gap:34px}
+}
+@media(max-width:380px){
+  .cf-brand{min-width:112px!important}.cf-brand-logo{width:118px!important}
+  .cf-booking-cta{display:none!important}
+  .cell-division-hero__actions a{width:100%}
+}

@@ -1,0 +1,25 @@
+{
+  "build": "premium-v17-mitosis-hero-20260819",
+  "typing": {
+    "mode": "scroll-linked character reveal",
+    "revealedCharacters": "white",
+    "currentCharacter": "#63e8a5",
+    "simultaneousHighlightedCharactersPerActiveBeat": 1,
+    "desktopOpeningHeadline": "72px at 1440px viewport",
+    "desktopFinalHeadline": "66.24px at 1440px viewport"
+  },
+  "mitosis": {
+    "keyframes": ["intact cell", "deep cleavage with two nuclei", "connected daughter cells", "separated cells"],
+    "generations": 6,
+    "maximumCells": 64,
+    "continuousMotionWithoutScroll": true,
+    "continuousMotionVerification": "1077 sampled screenshot-byte differences over 650ms",
+    "maximumCanvasBackingResolution": "3840x2160"
+  },
+  "browser": {
+    "horizontalOverflow": false,
+    "consoleErrorsOrWarnings": 0,
+    "handoffOpacityNearEnd": 0.911479,
+    "ctaButtonsPresent": 2
+  }
+}

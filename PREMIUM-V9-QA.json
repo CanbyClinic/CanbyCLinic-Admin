@@ -1,0 +1,33 @@
+{
+  "build": "Canby-Community-Clinic-PREMIUM-V9-20260817",
+  "html_pages": 63,
+  "links_scanned": 3831,
+  "booking_ctas": 229,
+  "forms": 19,
+  "images": 84,
+  "remote_images": 81,
+  "duplicate_id_pages": [],
+  "issues": [],
+  "checks": {
+    "v9_css_on_all_pages": true,
+    "v9_js_on_all_pages": true,
+    "one_h1_each": true,
+    "internal_link_targets_exist": true,
+    "appointment_fields_complete": true,
+    "secure_short_intake_present": true,
+    "service_decision_interfaces": true,
+    "cheap_ambulance_fallback_removed": true
+  },
+  "api_checks": {
+    "local_valid_submission": "PASS — returns ok=true + generated request ID",
+    "weekday_validation": "PASS — weekend request returns HTTP 400 invalid-date",
+    "production_fake_success_prevented": "PASS — production function requires CANBY_SECURE_APPOINTMENT_ENDPOINT",
+    "test_patient_data_removed_before_packaging": true
+  },
+  "known_release_gates": [
+    "Approved Terminal-matched desktop/mobile ambulance production frame sequence is not present in accessible assets.",
+    "Production secure scheduling endpoint and clinic-approved notification credentials must be configured.",
+    "Automated real-browser screenshot matrix was blocked by the execution environment and remains a launch gate.",
+    "81 remote editorial images remain and should be replaced/self-hosted during final photography art-direction pass."
+  ]
+}

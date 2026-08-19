@@ -1,0 +1,690 @@
+[
+  {
+    "page": "about.html",
+    "slot": "about-01",
+    "pexels_id": 5214997,
+    "src": "https://images.pexels.com/photos/5214997/pexels-photo-5214997.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "about.html",
+    "slot": "about-02",
+    "pexels_id": 35043674,
+    "src": "https://images.pexels.com/photos/35043674/pexels-photo-35043674.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "about.html",
+    "slot": "about-03",
+    "pexels_id": 6473188,
+    "src": "https://images.pexels.com/photos/6473188/pexels-photo-6473188.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "appointments.html",
+    "slot": "appointments-01",
+    "pexels_id": 7108317,
+    "src": "https://images.pexels.com/photos/7108317/pexels-photo-7108317.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "blood-pressure-number-and-story.html",
+    "slot": "blood-pressure-number-and-story-01",
+    "pexels_id": 6285359,
+    "src": "https://images.pexels.com/photos/6285359/pexels-photo-6285359.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "community-health-research-reseda-2025.html",
+    "slot": "community-health-research-reseda-2025-01",
+    "pexels_id": 9629672,
+    "src": "https://images.pexels.com/photos/9629672/pexels-photo-9629672.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "donate.html",
+    "slot": "donate-01",
+    "pexels_id": 6646878,
+    "src": "https://images.pexels.com/photos/6646878/pexels-photo-6646878.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "donate.html",
+    "slot": "donate-02",
+    "pexels_id": 4266936,
+    "src": "https://images.pexels.com/photos/4266936/pexels-photo-4266936.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "es-acerca.html",
+    "slot": "es-acerca-01",
+    "pexels_id": 5215008,
+    "src": "https://images.pexels.com/photos/5215008/pexels-photo-5215008.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "es-acerca.html",
+    "slot": "es-acerca-02",
+    "pexels_id": 12599544,
+    "src": "https://images.pexels.com/photos/12599544/pexels-photo-12599544.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "es-acerca.html",
+    "slot": "es-acerca-03",
+    "pexels_id": 7579831,
+    "src": "https://images.pexels.com/photos/7579831/pexels-photo-7579831.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "es-articulos.html",
+    "slot": "es-articulos-01",
+    "pexels_id": 7659869,
+    "src": "https://images.pexels.com/photos/7659869/pexels-photo-7659869.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "es-articulos.html",
+    "slot": "es-articulos-02",
+    "pexels_id": 8600447,
+    "src": "https://images.pexels.com/photos/8600447/pexels-photo-8600447.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "es-articulos.html",
+    "slot": "es-articulos-03",
+    "pexels_id": 8313187,
+    "src": "https://images.pexels.com/photos/8313187/pexels-photo-8313187.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "es-articulos.html",
+    "slot": "es-articulos-04",
+    "pexels_id": 6129688,
+    "src": "https://images.pexels.com/photos/6129688/pexels-photo-6129688.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "es-articulos.html",
+    "slot": "es-articulos-05",
+    "pexels_id": 9574401,
+    "src": "https://images.pexels.com/photos/9574401/pexels-photo-9574401.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "es-articulos.html",
+    "slot": "es-articulos-06",
+    "pexels_id": 4031503,
+    "src": "https://images.pexels.com/photos/4031503/pexels-photo-4031503.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "es-articulos.html",
+    "slot": "es-articulos-07",
+    "pexels_id": 8313224,
+    "src": "https://images.pexels.com/photos/8313224/pexels-photo-8313224.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "es-articulos.html",
+    "slot": "es-articulos-08",
+    "pexels_id": 8657374,
+    "src": "https://images.pexels.com/photos/8657374/pexels-photo-8657374.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "es-articulos.html",
+    "slot": "es-articulos-09",
+    "pexels_id": 8312897,
+    "src": "https://images.pexels.com/photos/8312897/pexels-photo-8312897.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "es-citas.html",
+    "slot": "es-citas-01",
+    "pexels_id": 7108318,
+    "src": "https://images.pexels.com/photos/7108318/pexels-photo-7108318.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "es-contacto.html",
+    "slot": "es-contacto-01",
+    "pexels_id": 9538591,
+    "src": "https://images.pexels.com/photos/9538591/pexels-photo-9538591.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "es-donar.html",
+    "slot": "es-donar-01",
+    "pexels_id": 5206923,
+    "src": "https://images.pexels.com/photos/5206923/pexels-photo-5206923.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "es-nuevo-paciente.html",
+    "slot": "es-nuevo-paciente-01",
+    "pexels_id": 7659873,
+    "src": "https://images.pexels.com/photos/7659873/pexels-photo-7659873.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "es-recursos.html",
+    "slot": "es-recursos-01",
+    "pexels_id": 8413294,
+    "src": "https://images.pexels.com/photos/8413294/pexels-photo-8413294.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "es-servicios.html",
+    "slot": "es-servicios-01",
+    "pexels_id": 4266934,
+    "src": "https://images.pexels.com/photos/4266934/pexels-photo-4266934.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "es-voluntariado.html",
+    "slot": "es-voluntariado-01",
+    "pexels_id": 6627661,
+    "src": "https://images.pexels.com/photos/6627661/pexels-photo-6627661.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "es.html",
+    "slot": "es-02",
+    "pexels_id": 4266942,
+    "src": "https://images.pexels.com/photos/4266942/pexels-photo-4266942.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "es.html",
+    "slot": "es-03",
+    "pexels_id": 4266935,
+    "src": "https://images.pexels.com/photos/4266935/pexels-photo-4266935.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "es.html",
+    "slot": "es-04",
+    "pexels_id": 7088834,
+    "src": "https://images.pexels.com/photos/7088834/pexels-photo-7088834.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "es.html",
+    "slot": "es-05",
+    "pexels_id": 7089301,
+    "src": "https://images.pexels.com/photos/7089301/pexels-photo-7089301.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "es.html",
+    "slot": "es-06",
+    "pexels_id": 7578798,
+    "src": "https://images.pexels.com/photos/7578798/pexels-photo-7578798.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "es.html",
+    "slot": "es-07",
+    "pexels_id": 6129678,
+    "src": "https://images.pexels.com/photos/6129678/pexels-photo-6129678.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "es.html",
+    "slot": "es-08",
+    "pexels_id": 4021805,
+    "src": "https://images.pexels.com/photos/4021805/pexels-photo-4021805.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "health-articles.html",
+    "slot": "health-articles-01",
+    "pexels_id": 4989141,
+    "src": "https://images.pexels.com/photos/4989141/pexels-photo-4989141.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "health-articles.html",
+    "slot": "health-articles-02",
+    "pexels_id": 3908179,
+    "src": "https://images.pexels.com/photos/3908179/pexels-photo-3908179.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "health-articles.html",
+    "slot": "health-articles-03",
+    "pexels_id": 8413183,
+    "src": "https://images.pexels.com/photos/8413183/pexels-photo-8413183.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "health-articles.html",
+    "slot": "health-articles-04",
+    "pexels_id": 12193104,
+    "src": "https://images.pexels.com/photos/12193104/pexels-photo-12193104.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "health-articles.html",
+    "slot": "health-articles-05",
+    "pexels_id": 7447003,
+    "src": "https://images.pexels.com/photos/7447003/pexels-photo-7447003.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "health-articles.html",
+    "slot": "health-articles-06",
+    "pexels_id": 5998448,
+    "src": "https://images.pexels.com/photos/5998448/pexels-photo-5998448.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "health-articles.html",
+    "slot": "health-articles-07",
+    "pexels_id": 5996644,
+    "src": "https://images.pexels.com/photos/5996644/pexels-photo-5996644.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "health-articles.html",
+    "slot": "health-articles-08",
+    "pexels_id": 8376171,
+    "src": "https://images.pexels.com/photos/8376171/pexels-photo-8376171.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "health-articles.html",
+    "slot": "health-articles-09",
+    "pexels_id": 5996762,
+    "src": "https://images.pexels.com/photos/5996762/pexels-photo-5996762.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "health-articles.html",
+    "slot": "health-articles-10",
+    "pexels_id": 7089037,
+    "src": "https://images.pexels.com/photos/7089037/pexels-photo-7089037.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "health-articles.html",
+    "slot": "health-articles-11",
+    "pexels_id": 5998456,
+    "src": "https://images.pexels.com/photos/5998456/pexels-photo-5998456.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "health-education.html",
+    "slot": "health-education-01",
+    "pexels_id": 5998441,
+    "src": "https://images.pexels.com/photos/5998441/pexels-photo-5998441.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "hy-about.html",
+    "slot": "hy-about-01",
+    "pexels_id": 5998458,
+    "src": "https://images.pexels.com/photos/5998458/pexels-photo-5998458.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "hy-about.html",
+    "slot": "hy-about-02",
+    "pexels_id": 5998450,
+    "src": "https://images.pexels.com/photos/5998450/pexels-photo-5998450.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "hy-appointments.html",
+    "slot": "hy-appointments-01",
+    "pexels_id": 7108329,
+    "src": "https://images.pexels.com/photos/7108329/pexels-photo-7108329.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "hy-contact.html",
+    "slot": "hy-contact-01",
+    "pexels_id": 28409976,
+    "src": "https://images.pexels.com/photos/28409976/pexels-photo-28409976.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "hy-donate.html",
+    "slot": "hy-donate-01",
+    "pexels_id": 5998455,
+    "src": "https://images.pexels.com/photos/5998455/pexels-photo-5998455.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "hy-journal.html",
+    "slot": "hy-journal-01",
+    "pexels_id": 5998457,
+    "src": "https://images.pexels.com/photos/5998457/pexels-photo-5998457.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "hy-resources.html",
+    "slot": "hy-resources-01",
+    "pexels_id": 8413176,
+    "src": "https://images.pexels.com/photos/8413176/pexels-photo-8413176.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "hy-services.html",
+    "slot": "hy-services-01",
+    "pexels_id": 5998449,
+    "src": "https://images.pexels.com/photos/5998449/pexels-photo-5998449.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "hy-volunteer.html",
+    "slot": "hy-volunteer-01",
+    "pexels_id": 5998459,
+    "src": "https://images.pexels.com/photos/5998459/pexels-photo-5998459.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "hy.html",
+    "slot": "hy-02",
+    "pexels_id": 5998445,
+    "src": "https://images.pexels.com/photos/5998445/pexels-photo-5998445.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "hy.html",
+    "slot": "hy-03",
+    "pexels_id": 8460030,
+    "src": "https://images.pexels.com/photos/8460030/pexels-photo-8460030.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "hy.html",
+    "slot": "hy-04",
+    "pexels_id": 7653091,
+    "src": "https://images.pexels.com/photos/7653091/pexels-photo-7653091.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "hy.html",
+    "slot": "hy-05",
+    "pexels_id": 8460049,
+    "src": "https://images.pexels.com/photos/8460049/pexels-photo-8460049.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "hy.html",
+    "slot": "hy-06",
+    "pexels_id": 7653126,
+    "src": "https://images.pexels.com/photos/7653126/pexels-photo-7653126.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "hy.html",
+    "slot": "hy-07",
+    "pexels_id": 35645526,
+    "src": "https://images.pexels.com/photos/35645526/pexels-photo-35645526.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "hy.html",
+    "slot": "hy-08",
+    "pexels_id": 8376266,
+    "src": "https://images.pexels.com/photos/8376266/pexels-photo-8376266.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "index.html",
+    "slot": "index-02",
+    "pexels_id": 6749742,
+    "src": "https://images.pexels.com/photos/6749742/pexels-photo-6749742.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "index.html",
+    "slot": "index-03",
+    "pexels_id": 6749750,
+    "src": "https://images.pexels.com/photos/6749750/pexels-photo-6749750.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "index.html",
+    "slot": "index-04",
+    "pexels_id": 7088483,
+    "src": "https://images.pexels.com/photos/7088483/pexels-photo-7088483.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "index.html",
+    "slot": "index-05",
+    "pexels_id": 7088534,
+    "src": "https://images.pexels.com/photos/7088534/pexels-photo-7088534.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "index.html",
+    "slot": "index-06",
+    "pexels_id": 7108157,
+    "src": "https://images.pexels.com/photos/7108157/pexels-photo-7108157.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "index.html",
+    "slot": "index-07",
+    "pexels_id": 6627853,
+    "src": "https://images.pexels.com/photos/6627853/pexels-photo-6627853.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "index.html",
+    "slot": "index-08",
+    "pexels_id": 8657369,
+    "src": "https://images.pexels.com/photos/8657369/pexels-photo-8657369.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "index.html",
+    "slot": "index-09",
+    "pexels_id": 7108332,
+    "src": "https://images.pexels.com/photos/7108332/pexels-photo-7108332.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "language-access-clinical-safety.html",
+    "slot": "language-access-clinical-safety-01",
+    "pexels_id": 7089329,
+    "src": "https://images.pexels.com/photos/7089329/pexels-photo-7089329.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "medication-list-patient-safety.html",
+    "slot": "medication-list-patient-safety-01",
+    "pexels_id": 8657368,
+    "src": "https://images.pexels.com/photos/8657368/pexels-photo-8657368.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "medication-support.html",
+    "slot": "medication-support-01",
+    "pexels_id": 11370618,
+    "src": "https://images.pexels.com/photos/11370618/pexels-photo-11370618.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "new-patient.html",
+    "slot": "new-patient-01",
+    "pexels_id": 7195308,
+    "src": "https://images.pexels.com/photos/7195308/pexels-photo-7195308.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "patient-resources.html",
+    "slot": "patient-resources-01",
+    "pexels_id": 7088531,
+    "src": "https://images.pexels.com/photos/7088531/pexels-photo-7088531.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "prediabetes-window-before-disease.html",
+    "slot": "prediabetes-window-before-disease-01",
+    "pexels_id": 7088487,
+    "src": "https://images.pexels.com/photos/7088487/pexels-photo-7088487.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "pregnancy-first-weeks-prenatal-care.html",
+    "slot": "pregnancy-first-weeks-prenatal-care-01",
+    "pexels_id": 7088526,
+    "src": "https://images.pexels.com/photos/7088526/pexels-photo-7088526.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "preventive-care-before-symptoms.html",
+    "slot": "preventive-care-before-symptoms-01",
+    "pexels_id": 7089401,
+    "src": "https://images.pexels.com/photos/7089401/pexels-photo-7089401.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "preventive-screenings.html",
+    "slot": "preventive-screenings-01",
+    "pexels_id": 7089629,
+    "src": "https://images.pexels.com/photos/7089629/pexels-photo-7089629.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "primary-care-community-infrastructure.html",
+    "slot": "primary-care-community-infrastructure-01",
+    "pexels_id": 7088833,
+    "src": "https://images.pexels.com/photos/7088833/pexels-photo-7088833.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "primary-care.html",
+    "slot": "primary-care-01",
+    "pexels_id": 7089387,
+    "src": "https://images.pexels.com/photos/7089387/pexels-photo-7089387.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "reseda-health-access.html",
+    "slot": "reseda-health-access-01",
+    "pexels_id": 7089300,
+    "src": "https://images.pexels.com/photos/7089300/pexels-photo-7089300.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "routine-primary-care-why-follow-up-matters.html",
+    "slot": "routine-primary-care-why-follow-up-matters-01",
+    "pexels_id": 4021794,
+    "src": "https://images.pexels.com/photos/4021794/pexels-photo-4021794.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "services.html",
+    "slot": "services-01",
+    "pexels_id": 8657372,
+    "src": "https://images.pexels.com/photos/8657372/pexels-photo-8657372.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "testing-referral-support.html",
+    "slot": "testing-referral-support-01",
+    "pexels_id": 8376212,
+    "src": "https://images.pexels.com/photos/8376212/pexels-photo-8376212.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  },
+  {
+    "page": "volunteer.html",
+    "slot": "volunteer-01",
+    "pexels_id": 5407235,
+    "src": "https://images.pexels.com/photos/5407235/pexels-photo-5407235.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "focus": null,
+    "role": "decorative editorial photography; adjacent page copy carries meaning"
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "build": "premium-final-20260815",
+  "html_pages": 63,
+  "stylesheet": "assets/css/canby-premium-final.css",
+  "script": "assets/js/canby-premium-final.js",
+  "audit": "PREMIUM-FINAL-AUDIT.md",
+  "improvements": "PREMIUM-FINAL-50-IMPROVEMENTS.md"
+}

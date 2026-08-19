@@ -1,0 +1,28 @@
+{
+  "build": "awwwards-v2-20260815",
+  "status": "PASS",
+  "metrics": {
+    "html_pages": 63,
+    "internal_html_links_checked": 2855,
+    "fragment_links_checked": 240,
+    "local_asset_references_checked": 632,
+    "visible_editorial_photo_placements": 86,
+    "unique_editorial_photo_ids": 86,
+    "reused_editorial_photo_ids": 0,
+    "forms": 17,
+    "unlabeled_fields": 0,
+    "unnamed_buttons": 0,
+    "placeholder_hash_links": 0,
+    "h1_count_issues": 0,
+    "homepages_with_embedded_ambulance": 3,
+    "embedded_scene_bin_matches_source": true,
+    "embedded_scene_bin_sha256": "cf45a4d49d9ff7e9daea6fbd157a86965ad074dcaa42c91dd188c497d2c21aac",
+    "v2_stylesheet_on_all_pages": true,
+    "total_static_issues": 0,
+    "http_html_pages_checked": 63,
+    "http_html_200": 63,
+    "http_html_failures": 0
+  },
+  "issues": [],
+  "http_failures": []
+}

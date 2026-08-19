@@ -1,0 +1,8 @@
+{
+  "name": "canby-community-clinic-awwwards-v2",
+  "private": true,
+  "scripts": {
+    "dev": "node server.mjs",
+    "start": "node server.mjs"
+  }
+}

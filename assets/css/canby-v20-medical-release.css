@@ -1,0 +1,74 @@
+/* V20 medical release: viewport-safe navigation, true hero centering, and compact page openings. */
+
+/* Each copy beat centers independently, regardless of whether it also has an address or actions. */
+.cell-division-hero__copy{display:block!important;inset:0!important;width:100%!important;padding:0!important;translate:none!important;transform:none!important}
+.cell-division-hero__beat{position:absolute!important;inset:0!important;display:flex!important;flex-direction:column;align-items:center;justify-content:center;width:100%!important;padding:clamp(84px,9vh,104px) clamp(28px,7vw,100px);box-sizing:border-box}
+.cell-division-hero__beat h1,.cell-division-hero__beat h2{width:min(720px,100%)!important;max-width:15ch!important;font-size:clamp(36px,3.55vw,54px)!important;line-height:1.04!important;margin-inline:auto!important;text-align:center!important}
+.cell-division-hero__beat h2{font-size:clamp(34px,3.35vw,51px)!important}
+.cell-division-hero__address{width:min(680px,100%);text-align:center}
+.cell-type-char.is-spelled{color:#fff!important}
+.cell-type-char.is-current{color:#73e3a7!important;text-shadow:0 0 18px rgba(115,227,167,.38)!important}
+
+/* Fixed menus must be positioned against the viewport, not a transformed nav item. */
+@media(min-width:1041px){
+  .cf-header{will-change:auto!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+  .cf-main-nav,.cf-main-nav .cf-nav-item{transform:none!important;translate:none!important;filter:none!important;perspective:none!important}
+  .cf-nav-item .cf-mega{position:fixed!important;left:calc(50vw - var(--cf-owner-left,0px))!important;right:auto!important;top:82px!important;width:min(840px,calc(100vw - 40px))!important;max-width:840px!important;max-height:calc(100svh - 100px)!important;grid-template-columns:minmax(0,1fr) minmax(270px,330px)!important;overflow:auto!important;overscroll-behavior:contain;transform:translate3d(-50%,12px,0)!important}
+  .cf-nav-item.is-open .cf-mega{transform:translate3d(-50%,0,0)!important}
+  .cf-mega-links,.cf-mega-note{min-width:0!important}
+  .cf-mega-note strong,.cf-mega-note span{overflow-wrap:anywhere}
+}
+
+/* Remove the false empty stage before interior-page content. */
+body.premium-final .page-hero{min-height:0!important;align-items:start!important}
+body.premium-final .page-hero-grid{min-height:0!important;align-items:start!important}
+body.premium-final .page-hero-grid,body.premium-final .journal-hero-grid{opacity:1!important;transform:none!important}
+body.premium-final .page-hero-grid>div:first-child{justify-content:flex-start!important;align-self:start!important;padding-block:clamp(68px,6vw,88px) clamp(42px,4.5vw,62px)!important}
+body.premium-final .page-hero h1{font-size:clamp(2.85rem,4.65vw,5.15rem)!important;line-height:.98!important;max-width:13ch!important}
+body.premium-final .page-hero-visual{margin-block:clamp(68px,6vw,88px) clamp(42px,4.5vw,62px)!important;max-height:520px!important}
+body[data-page-kind="article"].premium-final .page-hero-grid{min-height:0!important}
+body[data-page-kind="legal"].premium-final .page-hero-grid{min-height:0!important}
+body.premium-final .article-header,body.premium-final .article-hero{padding:clamp(70px,6vw,92px) 0 42px!important}
+body.premium-final .article-header h1{font-size:clamp(2.75rem,4.4vw,4.9rem)!important;line-height:.99!important;max-width:16ch!important}
+body.premium-final .article-hero-image{max-height:520px!important}
+
+/* Journal, appointment, and volunteer templates previously reserved billboard-scale whitespace. */
+.journal-hero .journal-hero-grid{min-height:0!important;padding-top:clamp(68px,6vw,88px)!important;padding-bottom:clamp(42px,4.5vw,62px)!important;align-items:center!important}
+.journal-hero .journal-hero-grid>div:first-child{align-self:start!important}
+.journal-hero .page-hero-visual{min-height:0!important;max-height:520px!important;aspect-ratio:4/3!important}
+.journal-hero h1{font-size:clamp(2.85rem,4.65vw,5.15rem)!important;line-height:.98!important;max-width:13ch!important}
+body.premium-final .v12-appointment{padding:clamp(54px,5vw,74px) 0 var(--v19-section-y)!important}
+body.premium-final .v12-appt-head{gap:clamp(18px,3vw,38px)!important;margin-bottom:clamp(34px,4vw,52px)!important}
+body.premium-final .v12-appt-head .v12-kicker{margin-bottom:0!important}
+body.premium-final .v12-appt-head h1{font-size:clamp(3rem,4.8vw,5.35rem)!important;line-height:.96!important;max-width:10ch!important}
+body.premium-final .v10-volunteer-form-section{padding:clamp(48px,4.5vw,68px) 0 clamp(72px,7vw,104px)!important}
+body.premium-final .v10-vol-form-head{gap:14px!important;margin:18px 0 clamp(38px,4vw,52px)!important}
+body.premium-final .v10-vol-form-head .v9-kicker{margin-bottom:0!important}
+body.premium-final .v10-vol-form-head h1,body.premium-final .v10-volunteer-copy h1{font-size:clamp(2.9rem,4.6vw,5rem)!important;line-height:.97!important;max-width:11ch!important}
+body.premium-final .v10-volunteer-hero-grid{min-height:clamp(520px,62vh,640px)!important}
+body.premium-final .v10-volunteer-copy{padding:clamp(42px,5vw,72px)!important}
+
+/* Localized portraits show the complete source image instead of cropping faces or bodies. */
+body[data-language="es"] .page-hero-visual img,body[data-language="hy"] .page-hero-visual img,
+body[data-language="es"] .v10-volunteer-photo img,body[data-language="hy"] .v10-volunteer-photo img{
+  width:100%!important;height:100%!important;object-fit:contain!important;object-position:50% 50%!important;transform:none!important;scale:1!important;background:#e7e9e3!important
+}
+
+@media(max-width:1040px){
+  body.premium-final .page-hero-grid>div:first-child{padding:56px var(--pad) 34px!important}
+  body.premium-final .page-hero-visual{margin:0 auto 42px!important}
+  .journal-hero .journal-hero-grid{padding-top:56px!important;padding-bottom:46px!important}
+  body.premium-final .v10-volunteer-form-section{padding-top:48px!important}
+}
+
+@media(max-width:760px){
+  .cell-division-hero__beat{padding:max(72px,calc(env(safe-area-inset-top) + 56px)) 20px max(72px,calc(env(safe-area-inset-bottom) + 56px))}
+  .cell-division-hero__beat h1,.cell-division-hero__beat h2{font-size:clamp(30px,9.2vw,40px)!important;max-width:14ch!important}
+  body.premium-final .page-hero-grid>div:first-child{padding:46px 20px 30px!important}
+  body.premium-final .page-hero h1,body[data-page-kind="article"].premium-final .page-hero h1{font-size:clamp(2.4rem,9.5vw,3.55rem)!important}
+  body.premium-final .article-header,body.premium-final .article-hero{padding:48px 20px 32px!important}
+  body.premium-final .article-header h1{font-size:clamp(2.35rem,9.2vw,3.45rem)!important}
+  body.premium-final .v12-appointment{padding-top:46px!important}
+  body.premium-final .v12-appt-head h1{font-size:clamp(2.75rem,11vw,4rem)!important}
+  body.premium-final .v10-vol-form-head h1,body.premium-final .v10-volunteer-copy h1{font-size:clamp(2.55rem,10vw,3.75rem)!important}
+}

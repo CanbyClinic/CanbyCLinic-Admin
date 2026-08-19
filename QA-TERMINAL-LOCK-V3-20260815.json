@@ -1,0 +1,20 @@
+{
+  "counts": {
+    "html_pages": 63,
+    "links": 2937,
+    "local_assets": 698,
+    "hash_links": 240,
+    "duplicate_ids": 0,
+    "bad_h1": 0,
+    "missing_assets": 0,
+    "broken_links": 0,
+    "broken_hashes": 0,
+    "home_terminal_scripts": 3,
+    "js_files": 8,
+    "js_syntax_errors": 0,
+    "css_files": 6,
+    "css_unbalanced": 0,
+    "terminal_key_files_ok": true
+  },
+  "issues": []
+}

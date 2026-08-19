@@ -1,10 +1,10 @@
 {
-  "name": "Canby Clinic",
-  "short_name": "Canby",
-  "start_url": "index.html",
+  "name": "Canby Community Clinic",
+  "short_name": "Canby Clinic",
+  "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#fffdf7",
-  "theme_color": "#00B4D8",
+  "background_color": "#f4efe5",
+  "theme_color": "#0d6f4b",
   "icons": [
     {
       "src": "assets/images/icon-192.png",
@@ -16,5 +16,6 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+  "lang": "en"
 }

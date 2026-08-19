@@ -1,0 +1,22 @@
+{
+  "version": "2026-08-17-terminal-film-master",
+  "status": "awaiting-production-frames",
+  "frameCount": 0,
+  "desktop": {
+    "pattern": "desktop/frame_{frame}.webp",
+    "width": 1920,
+    "height": 1080
+  },
+  "mobile": {
+    "pattern": "mobile/frame_{frame}.webp",
+    "width": 1080,
+    "height": 1920
+  },
+  "master": {
+    "recommendedWidth": 3840,
+    "recommendedHeight": 2160,
+    "recommendedFrames": "180-300"
+  },
+  "fallback": "../../images/hero-care.webp",
+  "notes": "The former low-poly GLB and fake CSS hero are intentionally not used. Set status=ready and frameCount after the Terminal-matched offline render sequence is approved."
+}

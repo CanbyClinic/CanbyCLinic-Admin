@@ -1,0 +1,24 @@
+{
+  "build": "premium-v20-medical-release-20260819",
+  "auditDate": "2026-08-19",
+  "result": "pass",
+  "htmlPages": 63,
+  "uniqueEditorialPhotos": 81,
+  "editorialPhotoPlacements": 81,
+  "duplicateEditorialPhotos": 0,
+  "duplicateDocumentIds": 0,
+  "brokenLocalReferences": 0,
+  "javascriptSyntax": "pass",
+  "cssBraceBalance": "pass",
+  "browserChecks": {
+    "desktopMenusChecked": 20,
+    "desktopMenusOutsideViewport": 0,
+    "heroLanguages": ["en", "es", "hy"],
+    "localizedHeroesSelfContained": true,
+    "firstHeroHeadlineCentered": true,
+    "legacyPageHeroMinimumHeightRemoved": true,
+    "localizedHeroImagesUseCompleteFraming": true,
+    "narrowLayoutOverflow": 0,
+    "consoleWarningsOrErrors": 0
+  }
+}

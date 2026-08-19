@@ -1,0 +1,16 @@
+{
+  "version": "V12",
+  "base": "V10",
+  "html_pages": 69,
+  "targeted_pages": [
+    "index.html",
+    "es.html",
+    "hy.html",
+    "appointments.html",
+    "es-citas.html",
+    "hy-appointments.html"
+  ],
+  "issues": [],
+  "passes": true,
+  "global_v11_css_present": false
+}
