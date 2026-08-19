@@ -78,7 +78,7 @@
   </div>`;
   oldHero.classList.add('is-ready');
   const runtime=document.createElement('script');
-  runtime.src='assets/js/canby-cell-hero.js?v=20260819-v21-2-smooth';
+  runtime.src='assets/js/canby-cell-hero.js?v=20260819-v21-4-mobile';
   runtime.defer=true;
   document.body.append(runtime);
 })();

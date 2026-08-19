@@ -2,6 +2,22 @@
   'use strict';
   const d=document, path=location.pathname.split('/').pop()||'index.html', main=d.querySelector('main');
 
+  // Keep the phone menu fixed to the viewport rather than to the transformed header.
+  const mobilePanel=d.querySelector('.cf-mobile-panel');
+  const menuButton=d.querySelector('.cf-menu-button');
+  if(mobilePanel&&mobilePanel.parentElement!==d.body)d.body.append(mobilePanel);
+  if(mobilePanel&&!mobilePanel.querySelector('.v21-mobile-languages')){
+    const current=d.documentElement.lang||'en';
+    mobilePanel.querySelector('.cf-mobile-meta')?.insertAdjacentHTML('beforebegin',`<div class="v21-mobile-languages"><span>${current==='es'?'Idioma':current==='hy'?'Լեզու':'Language'}</span><div><a href="index.html" lang="en"${current==='en'?' aria-current="page"':''}>EN</a><a href="es.html" lang="es"${current==='es'?' aria-current="page"':''}>ES</a><a href="hy.html" lang="hy"${current==='hy'?' aria-current="page"':''}>ՀԱՅ</a></div></div>`);
+  }
+  if(menuButton){
+    const labels={en:['Menu','Close'],es:['Menú','Cerrar'],hy:['Մենյու','Փակել']};
+    const copy=labels[d.documentElement.lang]||labels.en;
+    const syncMenu=()=>{const open=d.body.classList.contains('menu-open');menuButton.textContent=open?copy[1]:copy[0];menuButton.setAttribute('aria-label',open?copy[1]:copy[0]);mobilePanel?.setAttribute('aria-hidden',String(!open))};
+    new MutationObserver(syncMenu).observe(d.body,{attributes:true,attributeFilter:['class']});
+    syncMenu();
+  }
+
   // Homepage: remove the empty-feeling process block, make every panel actionable,
   // use bundled images, and give the location photograph a clear practical purpose.
   if(d.body.dataset.pageKind==='home'){

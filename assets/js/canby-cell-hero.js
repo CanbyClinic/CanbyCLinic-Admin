@@ -172,14 +172,22 @@
         const text = line.textContent.trim();
         line.setAttribute('aria-label', text);
         line.textContent = '';
-        return [...text].map(character => {
-          const span = document.createElement('span');
-          span.className = 'cell-type-char';
-          span.setAttribute('aria-hidden', 'true');
-          span.textContent = character === ' ' ? '\u00a0' : character;
-          line.append(span);
-          return span;
+        const characters=[];
+        text.split(/\s+/).forEach((word,index,words) => {
+          const wordSpan=document.createElement('span');
+          wordSpan.className='cell-type-word';
+          [...word].forEach(character => {
+            const span=document.createElement('span');
+            span.className='cell-type-char';
+            span.setAttribute('aria-hidden','true');
+            span.textContent=character;
+            wordSpan.append(span);
+            characters.push(span);
+          });
+          line.append(wordSpan);
+          if(index<words.length-1)line.append(document.createTextNode(' '));
         });
+        return characters;
       });
     });
   }
@@ -196,7 +204,11 @@
   }
 
   function updateCopy() {
-    const timings = [
+    const timings = innerWidth<760 ? [
+      { enter:0, typeEnd:.18, hold:.235, exit:.33 },
+      { enter:.27, typeEnd:.47, hold:.52, exit:.62 },
+      { enter:.56, typeEnd:.78, hold:1, exit:1.01 }
+    ] : [
       { enter:0, typeEnd:.19, hold:.235, exit:.295 },
       { enter:.30, typeEnd:.49, hold:.525, exit:.585 },
       { enter:.59, typeEnd:.80, hold:1, exit:1.01 }
@@ -220,7 +232,7 @@
 
   function resize() {
     const rect = canvas.getBoundingClientRect();
-    const dpr = Math.min(innerWidth < 760 ? 1.65 : 2, Math.max(1, devicePixelRatio || 1));
+    const dpr = Math.min(innerWidth < 760 ? 1.25 : 2, Math.max(1, devicePixelRatio || 1));
     width = Math.min(3840, Math.max(1, Math.round(rect.width * dpr)));
     height = Math.min(2160, Math.max(1, Math.round(rect.height * dpr)));
     if (canvas.width !== width || canvas.height !== height) {
@@ -263,7 +275,8 @@
       // Snap the final handoff so the sticky scene never keeps easing after it releases.
       // Elsewhere, render only while scroll progress is converging instead of burning a
       // permanent 60fps WebGL loop after the hero is finished.
-      progress = targetProgress > .985 ? targetProgress : (Math.abs(distance) < .00018 ? targetProgress : progress + distance * .18);
+      const easing=innerWidth<760?.30:.18;
+      progress = targetProgress > .985 ? targetProgress : (Math.abs(distance) < .00018 ? targetProgress : progress + distance * easing);
     }
     render(time);
     if (visible && !reduced && Math.abs(targetProgress - progress) > .00018) frame = requestAnimationFrame(tick);
