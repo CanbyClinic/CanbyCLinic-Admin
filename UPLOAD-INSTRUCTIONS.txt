@@ -1,0 +1,12 @@
+CANBY GITHUB PAGES DEPLOYMENT
+
+1. Unzip the package on your computer.
+2. Open the CanbyCLinic-Admin repository on GitHub.
+3. Upload every file and folder INSIDE this package to the publishing branch root.
+   The root must contain index.html, 404.html, .nojekyll, _next, assets, and the route folders.
+4. Do not upload only the ZIP and do not place these files inside an extra folder.
+5. In Settings > Pages, publish from the branch/root containing index.html.
+6. Wait for the GitHub Pages deployment to finish, then hard-refresh:
+   https://canbyclinic.github.io/CanbyCLinic-Admin/
+
+This bundle is already configured for the /CanbyCLinic-Admin/ base path.
