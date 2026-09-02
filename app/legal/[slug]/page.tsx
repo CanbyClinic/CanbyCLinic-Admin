@@ -1,0 +1,12 @@
+import { notFound } from 'next/navigation';
+import SiteFooter from '../../../components/SiteFooter';
+
+const pages: Record<string, { title: string; intro: string; body: string[] }> = {
+  accessibility: { title: 'Accessibility', intro: 'Canby Community Clinic aims to make clinic information and access understandable for people with different needs.', body: ['Call the clinic before your visit to ask about mobility access, communication support, language assistance, or another accommodation.', 'This website supports keyboard navigation, visible focus, reduced motion, semantic structure, and readable contrast. Contact the clinic if any part of the site prevents access.'] },
+  nondiscrimination: { title: 'Nondiscrimination', intro: 'The clinic’s approved nondiscrimination notice must be supplied or verified before public release.', body: ['This page is a clearly labeled publication placeholder and does not replace an approved legal notice.', 'For current information, contact Canby Community Clinic directly.'] },
+  privacy: { title: 'Privacy', intro: 'The final privacy policy must describe the actual website services, analytics, request workflow, and data handling.', body: ['This release does not collect medical information through a web form.', 'Do not send sensitive medical information through ordinary email or an unapproved form. Call the clinic for guidance.'] },
+  'notice-of-privacy-practices': { title: 'Notice of privacy practices', intro: 'An approved notice of privacy practices must be provided by the clinic before publication.', body: ['This placeholder must not be represented as the clinic’s legal notice.', 'Contact the clinic to request the current approved notice.'] },
+  emergency: { title: 'Emergency information', intro: 'This website is not monitored for emergencies.', body: ['Call 911 for urgent emergency care.', 'Do not use a visit request, voicemail, or website message when immediate emergency help is needed.'] },
+};
+export function generateStaticParams() { return Object.keys(pages).map((slug) => ({ slug })); }
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) { const { slug } = await params; const page = pages[slug]; if (!page) notFound(); return <main className="utility-page legal-page" id="main-content"><article><p>Canby Community Clinic</p><h1>{page.title}</h1><h2>{page.intro}</h2>{page.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</article><SiteFooter /></main>; }
