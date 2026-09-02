@@ -1,1 +1,0 @@
-Canby Clinic V4.1 hotfix root files. Upload the CONTENTS of Part 1 to the repository root, then upload the v41/images folder from Part 2.

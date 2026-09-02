@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://puravidacc.org/sitemap.xml

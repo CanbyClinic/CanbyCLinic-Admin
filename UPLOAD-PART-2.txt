@@ -1,5 +1,0 @@
-CANBY CLINIC V4.3 — PART 2
-
-Upload the `v43` folder in this package to the ROOT of the GitHub repository after Part 1.
-GitHub should show paths beginning with `v43/images/`.
-Do not upload this ZIP file itself.
