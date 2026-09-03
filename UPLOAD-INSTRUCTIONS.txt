@@ -1,12 +1,22 @@
-CANBY GITHUB PAGES DEPLOYMENT
+CANBY COMMUNITY CLINIC — GITHUB PAGES UPLOAD
 
-1. Unzip the package on your computer.
-2. Open the CanbyCLinic-Admin repository on GitHub.
-3. Upload every file and folder INSIDE this package to the publishing branch root.
-   The root must contain index.html, 404.html, .nojekyll, _next, assets, and the route folders.
-4. Do not upload only the ZIP and do not place these files inside an extra folder.
-5. In Settings > Pages, publish from the branch/root containing index.html.
-6. Wait for the GitHub Pages deployment to finish, then hard-refresh:
-   https://canbyclinic.github.io/CanbyCLinic-Admin/
+Upload the CONTENTS of this package to the root of the CanbyCLinic-Admin
+repository's publishing branch.
 
-This bundle is already configured for the /CanbyCLinic-Admin/ base path.
+Required at the repository root:
+- index.html
+- .nojekyll
+- _next/
+- assets/
+- page folders such as services/, appointments/, and visit/
+
+Built for:
+https://canbyclinic.github.io/CanbyCLinic-Admin/
+
+Keep .nojekyll. Without it, GitHub Pages may hide the _next folder and the
+site will load without its styling or interaction.
+
+Homepage interaction:
+Nine original photoreal continuity frames move a physician toward the clinic,
+open the two doors, and cross the threshold as the visitor scrolls. The images
+are not stock photographs and are not reused elsewhere on the website.
