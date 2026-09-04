@@ -1,13 +1,17 @@
 {
-  "generatedAt": "2026-09-02",
+  "generatedAt": "2026-09-03",
   "assets": [
-    { "id": "brand-logo", "path": "/assets/logo/canby-logo-original.jpeg", "width": 1529, "height": 608, "sha256": "bf3f7c7d9296e04facaedd4cfbcc2d7c5a5c60db68f336a49aec37d09c934df4", "provenance": "user-supplied; unchanged" },
+    { "id": "brand-logo", "path": "/assets/logo/canby-logo-transparent.png", "width": 1529, "height": 608, "sha256": "30ae42f1473754d6abca001dd9e0b49f7bc9c718c39fa9ec9a7ed7f1c001cb36", "provenance": "user-supplied mark; white JPEG matte removed" },
     { "id": "A-01", "path": "/assets/scenes/a-01-entrance.png", "width": 1672, "height": 941, "sha256": "38dbd87b6511991c03317b821b14c583d5888de374a0fb1043c6a879955d462f", "provenance": "original AI-generated representative media" },
     { "id": "H-01", "path": "/assets/scenes/h-01-arrival.png", "width": 1727, "height": 911, "sha256": "a861c00d6c29ecaff9d924fa31d0bbc00cfd760a6f638defa804954940496b14", "provenance": "original AI-generated representative media" },
     { "id": "N-01", "path": "/assets/scenes/n-01-preparation.png", "width": 1122, "height": 1402, "sha256": "1f9bb25831809fb057db8ff870fb590d4421f6189ff4c9299820aabb7424274b", "provenance": "original AI-generated representative media" },
     { "id": "O-01", "path": "/assets/scenes/o-01-team.png", "width": 1536, "height": 1024, "sha256": "d5af1910b94c6672b9dffbcf69f51c2bb162b2bab56f51f4ffa38543710070fb", "provenance": "original AI-generated representative media" },
     { "id": "R-01", "path": "/assets/scenes/r-01-resources.png", "width": 1536, "height": 1024, "sha256": "a8dd06bde84cc8bc10ea76edf2c79b92aa5dd00285ab27f4c4368e99affadd42", "provenance": "original AI-generated representative media" },
     { "id": "S-01", "path": "/assets/scenes/s-01-consultation.png", "width": 1536, "height": 1024, "sha256": "7d247e5ef929c508c78d8f5f13d53b036b125b375146615d0637b5d100af8d74", "provenance": "original AI-generated representative media" },
-    { "id": "V-01", "path": "/assets/scenes/v-01-reseda.png", "width": 1672, "height": 941, "sha256": "3bcd5434fb874455cf99fe2eff606a1f4ef45367d31bd5da29cd56087aa0157f", "provenance": "original AI-generated representative media" }
+    { "id": "V-01", "path": "/assets/scenes/v-01-reseda.png", "width": 1672, "height": 941, "sha256": "3bcd5434fb874455cf99fe2eff606a1f4ef45367d31bd5da29cd56087aa0157f", "provenance": "original AI-generated representative media" },
+    { "id": "VOL-01", "path": "/assets/scenes/vol-01-community.png", "width": 1672, "height": 941, "sha256": "c7508f361ac073cbdb5f0172b3b426fb59229736ffdfb1ecadaf0c672d3818be", "provenance": "original AI-generated representative media" },
+    { "id": "D-01", "path": "/assets/scenes/d-01-giving.png", "width": 1672, "height": 941, "sha256": "c45699b2e2f04924a435cf12a02be67d42ab06cae8af3afd8d2e0ed1dfcd0428", "provenance": "original AI-generated representative media" },
+    { "id": "H-FILM", "path": "/assets/films/canby-threshold-scroll-60fps-v2.mp4", "width": 1920, "height": 1080, "fps": 60, "sha256": "bb4da27f6a0da40136758ffad897e569dfcccebbf096349603179a4735df9225", "provenance": "licensed Pexels footage by Enrique Silva; modified for scroll playback" },
+    { "id": "H-POSTER", "path": "/assets/films/canby-threshold-poster.jpg", "width": 1920, "height": 1080, "sha256": "494730d9dd3ff60ab228ccd5353ea6755b3e93601d43bf52910feb5cf150d264", "provenance": "frame extracted from licensed H-FILM source" }
   ]
 }
