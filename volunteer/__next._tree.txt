@@ -1,2 +1,2 @@
-:HL["/CanbyCLinic-Admin/_next/static/chunks/025u4-9k0r-y-.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"volunteer","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"gcg3iJfW9DZgoG44hDgj7"}
+:HL["/CanbyCLinic-Admin/_next/static/chunks/0d~-jlj1q_4.k.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"volunteer","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"35TXQXVlUgh6Ibo14gdys"}

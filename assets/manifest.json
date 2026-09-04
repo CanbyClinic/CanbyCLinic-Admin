@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-03",
+  "generatedAt": "2026-09-04",
   "assets": [
     { "id": "brand-logo", "path": "/assets/logo/canby-logo-transparent.png", "width": 1529, "height": 608, "sha256": "30ae42f1473754d6abca001dd9e0b49f7bc9c718c39fa9ec9a7ed7f1c001cb36", "provenance": "user-supplied mark; white JPEG matte removed" },
     { "id": "A-01", "path": "/assets/scenes/a-01-entrance.png", "width": 1672, "height": 941, "sha256": "38dbd87b6511991c03317b821b14c583d5888de374a0fb1043c6a879955d462f", "provenance": "original AI-generated representative media" },
@@ -13,6 +13,9 @@
     { "id": "D-01", "path": "/assets/scenes/d-01-giving.png", "width": 1672, "height": 941, "sha256": "c45699b2e2f04924a435cf12a02be67d42ab06cae8af3afd8d2e0ed1dfcd0428", "provenance": "original AI-generated representative media" },
     { "id": "H-DOORS", "path": "/assets/films/canby-doors-closed-v3.jpg", "width": 1920, "height": 1080, "sha256": "59ea79f28fcf91bdf6bac5b1f85566960420a01378e782c7b3e6ccf59edaf520", "provenance": "original AI-generated representative sliding-door plate" },
     { "id": "H-FILM", "path": "/assets/films/canby-clinicians-scroll-60fps-v3.mp4", "width": 1920, "height": 1080, "fps": 60, "durationSeconds": 6, "sha256": "ca920454f82bfe5ffe8c7aa1d735e82aee3474b030ebbda54b64eb254a88ab4b", "provenance": "licensed Pexels footage by Pavel Danilyuk; trimmed, frame-blended, and encoded for scroll playback" },
-    { "id": "H-POSTER", "path": "/assets/films/canby-clinicians-poster-v3.jpg", "width": 1920, "height": 1080, "sha256": "c925ac4d26574b33461e43a0eb2e9618c23c3582e22c71e510ad484b724e9bbd", "provenance": "frame extracted from licensed H-FILM source" }
+    { "id": "H-POSTER", "path": "/assets/films/canby-clinicians-poster-v3.jpg", "width": 1920, "height": 1080, "sha256": "c925ac4d26574b33461e43a0eb2e9618c23c3582e22c71e510ad484b724e9bbd", "provenance": "frame extracted from licensed H-FILM source" },
+    { "id": "A-ELEVATOR", "path": "/assets/films/canby-elevator-closed-v1.jpg", "width": 1920, "height": 1080, "sha256": "12f436b10c98c1965eafabdce9d9508b65cd14b094e49fc05b14948aec3dc69f", "provenance": "original AI-generated representative closed-elevator plate" },
+    { "id": "A-FILM", "path": "/assets/films/canby-elevator-team-scroll-60fps-v1.mp4", "width": 1920, "height": 1080, "fps": 60, "durationSeconds": 6, "sha256": "7ca92cdda8373c6cfa9e64b5d534e1d520b0133116996752a68e1925030f64a0", "provenance": "licensed Pexels footage by Adventist Asia; trimmed, frame-blended, and encoded for scroll playback" },
+    { "id": "A-POSTER", "path": "/assets/films/canby-elevator-team-poster-v1.jpg", "width": 1920, "height": 1080, "sha256": "48c6f7026389a72e48accdc96df7bd47b5f8dfc2b839462b34a8b9218c099c65", "provenance": "frame extracted from licensed A-FILM source" }
   ]
 }
