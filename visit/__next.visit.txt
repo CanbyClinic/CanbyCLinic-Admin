@@ -2,4 +2,4 @@
 2:I[11968,["/CanbyCLinic-Admin/_next/static/chunks/0l6ra5~juzlq~.js","/CanbyCLinic-Admin/_next/static/chunks/0ocjokrnm5a3e.js","/CanbyCLinic-Admin/_next/static/chunks/0.g87s2_x6taw.js","/CanbyCLinic-Admin/_next/static/chunks/0xofw4f~~g~f3.js"],"default"]
 3:I[87804,["/CanbyCLinic-Admin/_next/static/chunks/0l6ra5~juzlq~.js","/CanbyCLinic-Admin/_next/static/chunks/0ocjokrnm5a3e.js","/CanbyCLinic-Admin/_next/static/chunks/0.g87s2_x6taw.js","/CanbyCLinic-Admin/_next/static/chunks/0xofw4f~~g~f3.js"],"default"]
 4:[]
-0:{"rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"isPartial":false,"staleTime":300,"varyParams":"$W4","buildId":"AX-0CZ03Siu9PVYvbxI_U"}
+0:{"rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"isPartial":false,"staleTime":300,"varyParams":"$W4","buildId":"gcg3iJfW9DZgoG44hDgj7"}
